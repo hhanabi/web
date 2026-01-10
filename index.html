@@ -1,398 +1,388 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hanabi - where lavender makes sense</title>
+    <title>Hanabi - Subsidiaria de Novaklar</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Iconos de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
-        
-        body {
-            background-color: #c0caff; /* Nuevo color de fondo */
-            color: #333;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 900px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-        
-        /* Logo styling - AZUL #061bb0 */
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
-            width: 100%;
-        }
-        
-        .logo {
-            width: 200px;
-            height: auto;
-            filter: brightness(0) saturate(100%) invert(12%) sepia(89%) saturate(3735%) hue-rotate(232deg) brightness(97%) contrast(105%);
-            /* Filtro para convertir el logo a tono azul #061bb0 */
-        }
-        
-        /* Título "Hanabi" - NEGRO */
-        @font-face {
-            font-family: 'Imprima';
-            src: url('https://raw.githubusercontent.com/hhanabi/web/main/Imprima.ttf');
-        }
-        
-        .title {
-            font-family: 'Imprima', sans-serif;
-            font-size: 4.5rem;
-            color: #000000;
-            text-align: center;
-            margin-bottom: 5px;
-            letter-spacing: 1.5px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Slogan - NEGRO y minúscula (sin text-transform) */
-        .slogan {
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.95rem;
-            color: #000000;
-            text-align: center;
-            margin-bottom: 50px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
-            /* text-transform removido para mantener minúscula */
-            opacity: 0.8;
-        }
-        
-        /* Botones y menús */
-        .buttons-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-top: 20px;
-            width: 100%;
-        }
-        
-        .button-wrapper {
-            position: relative;
-        }
-        
-        /* Botones BLANCOS con texto NEGRO */
-        .main-button {
-            background-color: #ffffff; /* Cambiado a blanco */
-            color: #000000; /* Cambiado a negro */
-            border: none;
-            padding: 16px 30px;
-            font-size: 1.1rem;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 700;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
-            min-width: 220px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-            border: 2px solid rgba(6, 27, 176, 0.1); /* Borde sutil azul */
-        }
-        
-        .main-button:hover {
-            background-color: #f8f9ff;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-            border-color: rgba(6, 27, 176, 0.2); /* Borde más visible al hover */
-        }
-        
-        /* Estructura interna del botón */
-        .button-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-        }
-        
-        .button-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .button-center {
-            flex-grow: 1;
-            text-align: center;
-            margin: 0 15px;
-        }
-        
-        .button-right {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 24px;
-        }
-        
-        /* Icono izquierdo - AZUL */
-        .button-left i {
-            font-size: 1.3rem;
-            color: #061bb0; /* Iconos en azul */
-        }
-        
-        /* Flecha "v" hacia abajo - derecha - NEGRA */
-        .chevron-down {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            border-right: 2px solid #000000; /* Cambiada a negro */
-            border-bottom: 2px solid #000000; /* Cambiada a negro */
-            transform: rotate(45deg);
-            transition: transform 0.3s ease;
-        }
-        
-        .button-wrapper:hover .chevron-down {
-            transform: rotate(225deg);
-        }
-        
-        /* Menús desplegables - mantienen estilo original */
-        .dropdown-menu {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: white;
-            min-width: 240px;
-            border-radius: 10px;
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(10px);
-            transition: all 0.3s ease;
-            z-index: 100;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-        
-        .button-wrapper:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        
-        .dropdown-menu ul {
-            list-style: none;
-        }
-        
-        .dropdown-menu li {
-            padding: 14px 20px;
-            border-bottom: 1px solid #f0f0f0;
-            transition: all 0.2s ease;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .dropdown-menu li:last-child {
-            border-bottom: none;
-        }
-        
-        .dropdown-menu li:hover {
-            background-color: #f8f9ff;
-            color: #061bb0;
-            padding-left: 25px;
-        }
-        
-        .dropdown-menu li i {
-            width: 18px;
-            text-align: center;
-            color: #888;
-        }
-        
-        .dropdown-menu li:hover i {
-            color: #061bb0;
-        }
-        
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .title {
-                font-size: 3.8rem;
-            }
-            
-            .slogan {
-                font-size: 0.9rem;
-            }
-            
-            .buttons-container {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-            
-            .button-wrapper {
-                width: 90%;
-            }
-            
-            .main-button {
-                width: 100%;
-                min-width: auto;
-            }
-            
-            .dropdown-menu {
-                width: 100%;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .title {
-                font-size: 3.2rem;
-            }
-            
-            .logo {
-                width: 150px;
-            }
-            
-            .button-wrapper {
-                width: 100%;
-            }
-            
-            .slogan {
-                font-size: 0.85rem;
-                margin-bottom: 40px;
-            }
-            
-            .main-button {
-                padding: 14px 20px;
-            }
-            
-            .button-center {
-                margin: 0 10px;
-            }
-        }
-        
-        /* Fondo decorativo - ya no necesario porque el body tiene el color */
-        .background-decor {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #c0caff; /* Mismo color que el body */
-            z-index: -1;
-        }
-        
-        /* Información adicional */
-        .info {
-            margin-top: 70px;
-            text-align: center;
-            color: #333;
-            font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
-            max-width: 600px;
-            line-height: 1.5;
-            padding: 20px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Efecto especial para el título - sin línea después (removido) */
-        .title-container {
-            position: relative;
-            margin-bottom: 5px;
-        }
-        
-        /* Efecto sutil para el logo */
-        .logo-container img {
-            transition: transform 0.5s ease;
-        }
-        
-        .logo-container img:hover {
-            transform: scale(1.05);
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="background-decor"></div>
-    
-    <div class="container">
-        <!-- Logo - AZUL #061bb0 -->
-        <div class="logo-container">
-            <img src="https://raw.githubusercontent.com/hhanabi/web/refs/heads/main/hanabi.svg" alt="Hanabi Logo" class="logo">
-        </div>
-        
-        <!-- Título - NEGRO -->
-        <div class="title-container">
-            <h1 class="title">Hanabi</h1>
-        </div>
-        
-        <!-- Slogan - NEGRO y minúscula -->
-        <p class="slogan">where lavender makes sense</p>
-        
-        <!-- Botones con menús desplegables -->
-        <div class="buttons-container">
-            <!-- Botón Catalogos -->
-            <div class="button-wrapper">
-                <button class="main-button" id="catalog-btn">
-                    <div class="button-content">
-                        <div class="button-left">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        <div class="button-center">
-                            Catalogos
-                        </div>
-                        <div class="button-right">
-                            <span class="chevron-down"></span>
-                        </div>
-                    </div>
-                </button>
-                <div class="dropdown-menu" id="catalog-menu">
-                    <ul>
-                        <li><i class="fas fa-gamepad"></i> Gaming</li>
-                        <li><i class="fas fa-laptop-code"></i> Software</li>
-                        <li><i class="fas fa-stream"></i> Streaming</li>
-                    </ul>
-                </div>
+    <!-- Hero Section con fondo lavanda -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <!-- Logo - AZUL #061bb0 -->
+            <div class="logo-container">
+                <img src="https://raw.githubusercontent.com/hhanabi/web/refs/heads/main/hanabi.svg" alt="Hanabi Logo" class="logo">
             </div>
             
-            <!-- Botón Elementos -->
-            <div class="button-wrapper">
-                <button class="main-button" id="elements-btn">
-                    <div class="button-content">
-                        <div class="button-left">
-                            <i class="fas fa-cube"></i>
+            <!-- Título - NEGRO -->
+            <div class="title-container">
+                <h1 class="title">Hanabi</h1>
+            </div>
+            
+            <!-- Slogan - NEGRO y minúscula -->
+            <p class="slogan">where lavender makes sense</p>
+            
+            <!-- Botones con menús desplegables -->
+            <div class="buttons-container">
+                <!-- Botón Catalogos -->
+                <div class="button-wrapper">
+                    <button class="main-button" id="catalog-btn">
+                        <div class="button-content">
+                            <div class="button-left">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <div class="button-center">
+                                Catalogos
+                            </div>
+                            <div class="button-right">
+                                <span class="chevron-down"></span>
+                            </div>
                         </div>
-                        <div class="button-center">
-                            Elementos
-                        </div>
-                        <div class="button-right">
-                            <span class="chevron-down"></span>
-                        </div>
+                    </button>
+                    <div class="dropdown-menu" id="catalog-menu">
+                        <ul>
+                            <li><a href="gaming.html"><i class="fas fa-gamepad"></i> Gaming</a></li>
+                            <li><a href="software.html"><i class="fas fa-laptop-code"></i> Software</a></li>
+                            <li><a href="streaming.html"><i class="fas fa-stream"></i> Streaming</a></li>
+                        </ul>
                     </div>
-                </button>
-                <div class="dropdown-menu" id="elements-menu">
-                    <ul>
-                        <li><i class="fas fa-list-alt"></i> Catalogo</li>
-                        <li><i class="fas fa-bullhorn"></i> Publicidad</li>
-                    </ul>
+                </div>
+                
+                <!-- Botón Elementos -->
+                <div class="button-wrapper">
+                    <button class="main-button" id="elements-btn">
+                        <div class="button-content">
+                            <div class="button-left">
+                                <i class="fas fa-cube"></i>
+                            </div>
+                            <div class="button-center">
+                                Elementos
+                            </div>
+                            <div class="button-right">
+                                <span class="chevron-down"></span>
+                            </div>
+                        </div>
+                    </button>
+                    <div class="dropdown-menu" id="elements-menu">
+                        <ul>
+                            <li><a href="catalogo.html"><i class="fas fa-list-alt"></i> Catalogo</a></li>
+                            <li><span><i class="fas fa-bullhorn"></i> Publicidad</span></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Contenido principal con fondo blanco -->
+    <main class="main-content">
+        <!-- Sección: Acerca de Hanabi -->
+        <section class="white-section" id="about">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2>Acerca de Hanabi</h2>
+                    <p class="section-subtitle">Subsidiaria de Novaklar</p>
+                </div>
+                <div class="section-content">
+                    <p class="justified-text">Hanabi es una empresa especializada en productos digitales <strong>low cost</strong>, subsidiaria de <strong>Novaklar</strong>. Nos dedicamos a ofrecer una amplia gama de soluciones digitales accesibles, incluyendo servicios de streaming, recargas para videojuegos y suscripciones a aplicaciones premium.</p>
+                    <p class="justified-text">Nuestro modelo de negocio se centra en la <strong>flexibilidad y la colaboración</strong>, permitiendo a personas de todas las edades convertirse en emprendedores digitales sin necesidad de inversión inicial o experiencia previa.</p>
+                </div>
+            </div>
+        </section>
         
-        <!-- Información adicional -->
-        <div class="info">
-            <p>Hanabi ofrece soluciones digitales innovadoras en múltiples categorías. Explora nuestros catalogos y elementos para descubrir todo lo que tenemos para ofrecerte.</
+        <!-- Sección: Modelo de Negocio -->
+        <section class="white-section" id="business-model">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-line"></i> Modelo de Negocio por Afiliados</h2>
+                    <p class="section-subtitle">Emprende desde casa sin inversión</p>
+                </div>
+                <div class="section-content">
+                    <p class="justified-text">En Hanabi operamos bajo un innovador <strong>modelo de afiliación</strong> donde reclutamos personas interesadas en vender nuestros productos digitales. No atendemos directamente al cliente final, sino que capacitamos y apoyamos a nuestros afiliados para que generen ingresos desde sus hogares.</p>
+                    
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3>Relación Ganar-Ganar</h3>
+                            <p>Nuestros afiliados generan ingresos mientras la empresa amplía su alcance comercial.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Flexibilidad Total</h3>
+                            <p>Puedes colaborar con nosotros adaptando los horarios a tu disponibilidad personal.</p>
+                        </div>
+                        
+                        <div class="feature-card">
+                            <div class="feature-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3>Trabajo Remoto</h3>
+                            <p>Toda la operación se realiza en línea, sin necesidad de desplazamientos o oficinas físicas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección: Roles de Afiliados -->
+        <section class="white-section" id="affiliate-roles">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2><i class="fas fa-user-tag"></i> Roles de Afiliados</h2>
+                    <p class="section-subtitle">Elige el modelo que mejor se adapte a ti</p>
+                </div>
+                <div class="section-content">
+                    <p class="justified-text">En Hanabi ofrecemos dos modalidades de afiliación para adaptarnos a diferentes perfiles y preferencias. Puedes elegir ser <strong>Revendedor</strong> o <strong>Promotor</strong>, dependiendo de cómo prefieras operar.</p>
+                    
+                    <div class="roles-comparison">
+                        <!-- Card Revendedor -->
+                        <div class="role-card revendedor">
+                            <div class="role-header">
+                                <div class="role-icon">
+                                    <i class="fas fa-store"></i>
+                                </div>
+                                <h3>Revendedor</h3>
+                                <div class="role-badge">Gestión Directa</div>
+                            </div>
+                            <div class="role-description">
+                                <p>Los revendedores promocionan nuestros productos y servicios directamente. Una vez que tienen una venta segura:</p>
+                                <ul class="role-list">
+                                    <li><i class="fas fa-check-circle"></i> Reciben el pago directamente del cliente</li>
+                                    <li><i class="fas fa-check-circle"></i> Compran el servicio solicitado con ese dinero</li>
+                                    <li><i class="fas fa-check-circle"></i> Entregan el servicio al cliente</li>
+                                    <li><i class="fas fa-check-circle"></i> El excedente es su ganancia</li>
+                                </ul>
+                            </div>
+                            <div class="role-footer">
+                                <p><strong>Ideal para:</strong> Personas que prefieren tener control total del proceso de venta.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Card Promotor -->
+                        <div class="role-card promotor">
+                            <div class="role-header">
+                                <div class="role-icon">
+                                    <i class="fas fa-bullhorn"></i>
+                                </div>
+                                <h3>Promotor</h3>
+                                <div class="role-badge">Comisión del 40%</div>
+                            </div>
+                            <div class="role-description">
+                                <p>Los promotores promocionan nuestros productos y servicios, pero no atienden directamente las ventas:</p>
+                                <ul class="role-list">
+                                    <li><i class="fas fa-check-circle"></i> Promocionan productos y generan leads</li>
+                                    <li><i class="fas fa-check-circle"></i> Refieren la venta a nuestros asesores</li>
+                                    <li><i class="fas fa-check-circle"></i> Nuestro equipo completa la transacción</li>
+                                    <li><i class="fas fa-check-circle"></i> Reciben una comisión del <strong>40%</strong> de la venta</li>
+                                </ul>
+                            </div>
+                            <div class="role-footer">
+                                <p><strong>Ideal para:</strong> Personas que prefieren enfocarse solo en la promoción.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección: Conviértete en Afiliado -->
+        <section class="white-section" id="affiliate">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2><i class="fas fa-user-plus"></i> Conviértete en Afiliado</h2>
+                    <p class="section-subtitle">Genera ingresos desde los 13 años</p>
+                </div>
+                <div class="section-content">
+                    <p class="justified-text">En Hanabi creemos en el potencial de los jóvenes emprendedores. Por eso, nuestro programa de afiliados está diseñado para ser accesible a partir de <strong>13 años de edad</strong>, convirtiéndonos en una oportunidad única para estudiantes y jóvenes que desean generar sus propios ingresos.</p>
+                    
+                    <div class="requirements">
+                        <h3><i class="fas fa-clipboard-check"></i> Requisitos para Afiliarte</h3>
+                        <ul class="requirements-list">
+                            <li><i class="fas fa-check-circle"></i> Tener mínimo <strong>13 años de edad</strong></li>
+                            <li><i class="fas fa-check-circle"></i> Contar con una cuenta activa en <strong>Nequi o DaviPlata</strong></li>
+                            <li><i class="fas fa-check-circle"></i> Acceso a internet y dispositivo móvil o computadora</li>
+                            <li><i class="fas fa-check-circle"></i> Motivación para emprender y generar ingresos</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="benefits">
+                        <h3>Beneficios de ser Afiliado</h3>
+                        <div class="benefits-grid">
+                            <div class="benefit-item">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>Comisiones atractivas por ventas</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-clock"></i>
+                                <span>Horarios flexibles</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span>Capacitación sin costo</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>Crecimiento profesional</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- CTA para convertirse en afiliado -->
+                    <div class="cta-affiliate">
+                        <h3><i class="fas fa-rocket"></i> ¿Listo para comenzar?</h3>
+                        <p>Únete a nuestra comunidad de afiliados y comienza a generar ingresos desde hoy.</p>
+                        <button class="cta-button" id="join-button">
+                            <i class="fas fa-user-plus"></i> Quiero ser Afiliado
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección: Nuestro Equipo -->
+        <section class="white-section" id="team">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2><i class="fas fa-users-cog"></i> Nuestro Equipo</h2>
+                    <p class="section-subtitle">Conoce a quienes hacen posible Hanabi</p>
+                </div>
+                <div class="section-content">
+                    <p class="justified-text">Contamos con un equipo dedicado y profesional que trabaja para ofrecer la mejor experiencia tanto a nuestros afiliados como a los clientes finales de nuestros productos digitales.</p>
+                    
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3>Ester González</h3>
+                            <p class="member-role">Administradora y Asesora Comercial</p>
+                            <p class="member-desc">Responsable de la gestión operativa y apoyo a los afiliados en su proceso comercial. Atiende tanto a revendedores como a promotores.</p>
+                        </div>
+                        
+                        <div class="team-member">
+                            <div class="member-photo">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3>Juan Quiroga</h3>
+                            <p class="member-role">Asesor Comercial</p>
+                            <p class="member-desc">Especialista en ventas y estrategias comerciales. Atiende las referencias de los promotores y apoya en el cierre de ventas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección: Horarios de Atención -->
+        <section class="white-section" id="schedule">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2><i class="fas fa-calendar-alt"></i> Horarios de Atención</h2>
+                    <p class="section-subtitle">Estamos aquí para apoyarte</p>
+                </div>
+                <div class="section-content">
+                    <div class="schedule-container">
+                        <div class="schedule-days">
+                            <div class="day-card">
+                                <h4>Lunes a Sábado</h4>
+                                <p><i class="far fa-clock"></i> 9:00 AM - 9:00 PM</p>
+                            </div>
+                            <div class="day-card">
+                                <h4>Domingos y Festivos</h4>
+                                <p><i class="far fa-clock"></i> 9:00 AM - 7:00 PM</p>
+                            </div>
+                        </div>
+                        <p class="justified-text">Nuestro equipo está disponible en estos horarios para brindar soporte, resolver dudas y acompañar a nuestros afiliados en su proceso de crecimiento. Puedes contactarnos a través de nuestros canales oficiales dentro de estos horarios operativos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección: Productos Digitales -->
+        <section class="white-section" id="products">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2><i class="fas fa-box-open"></i> Nuestros Productos Digitales</h2>
+                    <p class="section-subtitle">Variedad de soluciones low cost</p>
+                </div>
+                <div class="section-content">
+                    <p class="justified-text">Ofrecemos una amplia gama de productos digitales accesibles que cubren las necesidades del mercado actual, permitiendo a nuestros afiliados contar con un portafolio diversificado y atractivo para diferentes segmentos de clientes.</p>
+                    
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-icon streaming">
+                                <i class="fas fa-tv"></i>
+                            </div>
+                            <h3>Servicios de Streaming</h3>
+                            <p>Suscripciones a plataformas de entretenimiento digital a precios competitivos.</p>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-icon gaming">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <h3>Recargas para Juegos</h3>
+                            <p>Monedas virtuales, suscripciones y contenido especial para videojuegos populares.</p>
+                        </div>
+                        
+                        <div class="product-card">
+                            <div class="product-icon software">
+                                <i class="fas fa-laptop-code"></i>
+                            </div>
+                            <h3>Suscripciones a Aplicaciones</h3>
+                            <p>Acceso a software y aplicaciones premium con descuentos exclusivos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Pie de página -->
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Hanabi es una subsidiaria de Novaklar</p>
+                    <p class="copyright">© 2023 Hanabi. Todos los derechos reservados.</p>
+                </div>
+                <div class="footer-by">
+                    <p>by:</p>
+                    <img src="https://raw.githubusercontent.com/novaklar/web/refs/heads/main/cloud.svg" alt="Novaklar Logo" class="novaklar-logo">
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Modal para unirse como afiliado -->
+    <div class="modal" id="join-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-user-plus"></i> Unirse como Afiliado</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Para unirte como afiliado de Hanabi, contacta a nuestro equipo:</p>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> Envíanos un mensaje a nuestros asesores</p>
+                    <p><i class="fas fa-clock"></i> Horario de atención: Lunes a Sábado 9am-9pm</p>
+                    <p><i class="fas fa-user-check"></i> Te guiaremos paso a paso en el proceso</p>
+                </div>
+                <div class="modal-actions">
+                    <button class="modal-button cancel">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
