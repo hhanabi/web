@@ -1,0 +1,128 @@
+// script.js
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Modal para unirse como afiliado
+    const joinButton = document.getElementById('join-button');
+    const joinModal = document.getElementById('join-modal');
+    const closeModalButtons = document.querySelectorAll('.close-modal, .modal-button.cancel');
+    
+    if (joinButton) {
+        joinButton.addEventListener('click', function() {
+            if (joinModal) {
+                joinModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    }
+    
+    // Cerrar modal
+    closeModalButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            if (joinModal) {
+                joinModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    });
+    
+    // Cerrar modal al hacer clic fuera del contenido
+    window.addEventListener('click', function(event) {
+        if (event.target === joinModal) {
+            joinModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    // Efecto de animación para las secciones al hacer scroll
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-section');
+            }
+        });
+    }, observerOptions);
+    
+    // Observar todas las secciones blancas
+    document.querySelectorAll('.white-section').forEach(section => {
+        observer.observe(section);
+    });
+    
+    // Efecto de hover mejorado para las tarjetas
+    const featureCards = document.querySelectorAll('.feature-card, .product-card, .team-member, .role-card');
+    
+    featureCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transition = 'all 0.4s ease';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transition = 'all 0.3s ease';
+        });
+    });
+    
+    // Animación para los elementos de beneficios
+    const benefitItems = document.querySelectorAll('.benefit-item');
+    
+    benefitItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            const icon = this.querySelector('i');
+            icon.style.transform = 'scale(1.2)';
+            icon.style.transition = 'transform 0.3s ease';
+        });
+        
+        item.addEventListener('mouseleave', function() {
+            const icon = this.querySelector('i');
+            icon.style.transform = 'scale(1)';
+        });
+    });
+    
+    // Efecto para el logo de Hanabi
+    const hanabiLogo = document.querySelector('.logo');
+    
+    if (hanabiLogo) {
+        hanabiLogo.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05)';
+            this.style.transition = 'transform 0.5s ease';
+        });
+        
+        hanabiLogo.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    }
+    
+    // Smooth scroll para enlaces internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                // Si es el hero, scroll al inicio
+                if (targetId === '#hero') {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+    
+    // Mostrar mensaje de bienvenida en consola
+    console.log('%c🌟 Hanabi - Where lavender makes sense 🌟', 'color: #061bb0; font-size: 16px; font-weight: bold;');
+    console.log('%cBienvenido al sitio oficial de Hanabi, subsidiaria de Novaklar', 'color: #6c5ce7; font-size: 14px;');
+    console.log('%cDos roles disponibles: Revendedor y Promotor (40% comisión)', 'color: #4d7cff; font-size: 13px;');
+});
