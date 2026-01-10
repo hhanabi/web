@@ -464,7 +464,7 @@ body {
     font-size: 0.95rem;
 }
 
-/* Requisitos */
+/* Requisitos - MEJORADO PARA MÓVIL */
 .requirements {
     background-color: #f8f9ff;
     border-radius: 12px;
@@ -500,9 +500,10 @@ body {
 
 .requirements-list li i {
     color: #061bb0;
+    flex-shrink: 0; /* Evita que el icono se reduzca */
 }
 
-/* Beneficios */
+/* Beneficios - MEJORADO PARA MÓVIL */
 .benefits {
     margin-top: 40px;
 }
@@ -525,7 +526,7 @@ body {
     border-radius: 10px;
     padding: 20px;
     display: flex;
-    align-items: center;
+    align-items: flex-start; /* Alineación mejorada para móvil */
     gap: 15px;
     transition: all 0.3s ease;
 }
@@ -538,11 +539,14 @@ body {
 .benefit-item i {
     font-size: 1.5rem;
     color: #061bb0;
+    flex-shrink: 0; /* Evita que el icono se reduzca */
+    margin-top: 3px; /* Alineación vertical mejorada */
 }
 
 .benefit-item span {
     font-weight: 500;
     color: #333;
+    line-height: 1.4;
 }
 
 /* CTA para afiliados */
@@ -879,7 +883,10 @@ body {
     background-color: #4d7cff;
 }
 
-/* RESPONSIVE DESIGN - OPTIMIZADO PARA MÓVIL */
+/* =========================================== */
+/* RESPONSIVE DESIGN - MEJORADO PARA MÓVIL */
+/* =========================================== */
+
 @media (max-width: 992px) {
     .section-container {
         max-width: 95%;
@@ -892,24 +899,40 @@ body {
 
 @media (max-width: 768px) {
     .hero-section {
-        min-height: 100vh; /* Ajustado para mantener proporción */
-        padding: 20px 15px;
+        min-height: auto; /* Cambiado de 100vh a auto para evitar espacio excesivo */
+        padding: 15px 15px 40px; /* Reducido padding superior */
+        justify-content: flex-start; /* Alineación desde arriba */
+    }
+    
+    .hero-container {
+        margin-top: 10px; /* Reducido margen superior */
+    }
+    
+    .logo {
+        width: 140px; /* Logo más pequeño en móvil */
+        margin-top: 10px;
     }
     
     .title {
-        font-size: 3.3rem;
+        font-size: 2.8rem; /* Título más pequeño */
+        margin-top: 10px;
+        margin-bottom: 8px;
+        line-height: 1.1;
     }
     
     .slogan {
-        font-size: 0.9rem;
-        margin-bottom: 40px;
+        font-size: 0.85rem;
+        margin-bottom: 30px; /* Reducido espacio debajo del slogan */
+        line-height: 1.4;
+        padding: 0 10px;
     }
     
     .buttons-container {
         flex-direction: column;
         align-items: center;
-        gap: 20px;
-        margin-bottom: 30px;
+        gap: 15px; /* Espacio reducido entre botones */
+        margin-top: 15px;
+        margin-bottom: 20px; /* Menos margen inferior */
     }
     
     .button-wrapper {
@@ -920,7 +943,8 @@ body {
     .main-button {
         width: 100%;
         min-width: auto;
-        padding: 14px 20px;
+        padding: 14px 15px; /* Padding reducido */
+        font-size: 1rem;
     }
     
     .dropdown-menu {
@@ -928,22 +952,38 @@ body {
     }
     
     .white-section {
-        padding: 40px 15px;
+        padding: 30px 15px; /* Padding reducido en secciones */
     }
     
     .section-header h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem; /* Título de sección más pequeño */
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    
+    .section-subtitle {
+        font-size: 0.95rem;
     }
     
     .roles-comparison {
         grid-template-columns: 1fr;
-        gap: 25px;
+        gap: 20px; /* Espacio reducido entre tarjetas */
+        margin-top: 25px;
     }
     
     .role-card {
-        padding: 25px 20px;
+        padding: 20px 15px; /* Padding reducido */
+    }
+    
+    .role-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+    }
+    
+    .role-card h3 {
+        font-size: 1.3rem;
     }
     
     .features-grid,
@@ -951,87 +991,115 @@ body {
     .team-grid,
     .products-grid {
         grid-template-columns: 1fr;
-        gap: 25px;
+        gap: 20px; /* Espacio reducido */
+        margin-top: 25px;
+    }
+    
+    .feature-card,
+    .product-card {
+        padding: 20px;
+    }
+    
+    .feature-icon {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .feature-icon i {
+        font-size: 1.5rem;
+    }
+    
+    .feature-card h3,
+    .product-card h3 {
+        font-size: 1.2rem;
+    }
+    
+    /* REQUISITOS - MEJORADO PARA MÓVIL */
+    .requirements {
+        padding: 20px; /* Padding reducido */
+        margin: 20px 0;
+    }
+    
+    .requirements h3 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .requirements-list li {
+        padding: 10px 0;
+        font-size: 0.95rem; /* Tamaño de fuente reducido */
+        align-items: flex-start; /* Alineación desde arriba para items largos */
+        gap: 12px;
+    }
+    
+    .requirements-list li i {
+        font-size: 1rem;
+        margin-top: 2px; /* Ajuste de alineación vertical */
+    }
+    
+    /* BENEFICIOS - MEJORADO PARA MÓVIL */
+    .benefits {
+        margin-top: 30px;
+    }
+    
+    .benefits h3 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+    
+    .benefits-grid {
+        gap: 12px; /* Espacio reducido entre items */
+    }
+    
+    .benefit-item {
+        padding: 15px; /* Padding reducido */
+        align-items: flex-start; /* Alineación mejorada */
+    }
+    
+    .benefit-item i {
+        font-size: 1.2rem; /* Iconos más pequeños */
+        margin-top: 2px;
+    }
+    
+    .benefit-item span {
+        font-size: 0.95rem; /* Texto más pequeño */
+        line-height: 1.3;
     }
     
     .schedule-days {
         flex-direction: column;
         align-items: center;
-        gap: 25px;
+        gap: 20px; /* Espacio reducido */
     }
     
     .day-card {
         width: 100%;
         min-width: auto;
+        padding: 20px;
     }
     
     .cta-affiliate {
-        padding: 30px 20px;
+        padding: 25px 15px; /* Padding reducido */
+        margin-top: 30px;
+    }
+    
+    .cta-affiliate h3 {
+        font-size: 1.4rem;
+        flex-direction: column;
+        gap: 10px;
     }
     
     .cta-button {
         padding: 12px 25px;
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-section {
-        padding: 20px 10px;
-    }
-    
-    .title {
-        font-size: 2.8rem;
-    }
-    
-    .logo {
-        width: 150px;
-    }
-    
-    .slogan {
-        font-size: 0.85rem;
-        margin-bottom: 30px;
-    }
-    
-    .button-wrapper {
-        width: 100%;
-    }
-    
-    .button-center {
-        margin: 0 10px;
-    }
-    
-    .white-section {
-        padding: 30px 10px;
-    }
-    
-    .section-header h2 {
-        font-size: 1.6rem;
-    }
-    
-    .section-subtitle {
         font-size: 1rem;
     }
     
-    .footer {
-        padding: 30px 15px;
-    }
-    
-    .justified-text {
-        font-size: 1rem;
-    }
-    
-    .requirements {
-        padding: 20px 15px;
-    }
-    
-    .requirements-list li {
-        font-size: 1rem;
-        align-items: flex-start;
-    }
-    
-    .benefit-item {
-        padding: 15px;
+    /* Equipo en móvil */
+    .team-member {
+        padding: 20px;
     }
     
     .member-photo {
@@ -1041,5 +1109,175 @@ body {
     
     .member-photo i {
         font-size: 2.5rem;
+    }
+    
+    /* Footer en móvil */
+    .footer {
+        padding: 30px 15px;
+    }
+    
+    .footer-content {
+        gap: 15px;
+    }
+    
+    .footer-info p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 10px 10px 30px; /* Padding aún más reducido */
+    }
+    
+    .logo-container {
+        margin-bottom: 10px;
+    }
+    
+    .logo {
+        width: 120px; /* Logo más pequeño */
+    }
+    
+    .title {
+        font-size: 2.3rem; /* Título aún más pequeño */
+        margin-bottom: 5px;
+    }
+    
+    .slogan {
+        font-size: 0.8rem;
+        margin-bottom: 25px;
+        padding: 0 5px;
+    }
+    
+    .buttons-container {
+        gap: 12px;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+    
+    .button-wrapper {
+        max-width: 280px;
+    }
+    
+    .main-button {
+        padding: 12px 10px;
+        font-size: 0.95rem;
+    }
+    
+    .button-left i {
+        font-size: 1.1rem;
+    }
+    
+    .button-center {
+        margin: 0 8px;
+    }
+    
+    .white-section {
+        padding: 25px 10px; /* Padding más reducido */
+    }
+    
+    .section-header h2 {
+        font-size: 1.4rem;
+    }
+    
+    .justified-text {
+        font-size: 0.95rem; /* Texto más pequeño */
+        line-height: 1.5;
+    }
+    
+    /* REQUISITOS - EXTRA PEQUEÑO */
+    .requirements {
+        padding: 15px;
+    }
+    
+    .requirements h3 {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+    
+    .requirements-list li {
+        font-size: 0.9rem;
+        padding: 8px 0;
+        gap: 10px;
+    }
+    
+    /* BENEFICIOS - EXTRA PEQUEÑO */
+    .benefits h3 {
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+    }
+    
+    .benefits-grid {
+        gap: 10px;
+    }
+    
+    .benefit-item {
+        padding: 12px;
+    }
+    
+    .benefit-item i {
+        font-size: 1.1rem;
+    }
+    
+    .benefit-item span {
+        font-size: 0.9rem;
+    }
+    
+    /* Equipo muy pequeño */
+    .member-photo {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .member-photo i {
+        font-size: 2rem;
+    }
+    
+    .team-member h3 {
+        font-size: 1.2rem;
+    }
+    
+    .member-role {
+        font-size: 0.95rem;
+    }
+    
+    .footer {
+        padding: 25px 10px;
+    }
+    
+    .novaklar-logo {
+        width: 70px;
+    }
+}
+
+/* Reglas adicionales para dispositivos muy pequeños en orientación vertical */
+@media (max-width: 360px) {
+    .title {
+        font-size: 2rem;
+    }
+    
+    .logo {
+        width: 100px;
+    }
+    
+    .main-button {
+        padding: 10px 8px;
+        font-size: 0.9rem;
+    }
+    
+    .requirements-list li {
+        flex-direction: column; /* En pantallas muy pequeñas, apilar icono y texto */
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .requirements-list li i {
+        margin-bottom: 5px;
+    }
+    
+    .benefit-item {
+        flex-direction: column; /* Apilar icono y texto */
+        align-items: flex-start;
+        gap: 8px;
     }
 }
