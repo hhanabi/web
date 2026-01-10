@@ -1,940 +1,398 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hanabi - Proyecto Innovador</title>
+    <title>Hanabi - where lavender makes sense</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Iconos de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Importar tipografía Imprima para el título */
-        @font-face {
-            font-family: 'Imprima';
-            src: url('https://raw.githubusercontent.com/hhanabi/web/main/Imprima.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-
-        :root {
-            --color-primary: #061bb0;
-            --color-secondary: #c0caff;
-            --color-white: #ffffff;
-            --color-light: #f5f7ff;
-            --color-dark: #333333;
-            --color-gray: #777777;
-            --spacing-xs: 8px;
-            --spacing-sm: 16px;
-            --spacing-md: 32px;
-            --spacing-lg: 64px;
-            --spacing-xl: 128px;
-            --border-radius: 12px;
-            --shadow: 0 10px 30px rgba(6, 27, 176, 0.1);
-            --transition: all 0.3s ease;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
         }
-
+        
         body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--color-dark);
-            background-color: var(--color-white);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-sm);
-        }
-
-        /* Header y Navegación */
-        header {
-            background-color: var(--color-white);
-            box-shadow: var(--shadow);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: var(--spacing-sm) 0;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-        }
-
-        .logo {
-            height: 50px;
-            width: auto;
-        }
-
-        .logo-text {
-            font-family: 'Imprima', sans-serif;
-            font-size: 28px;
-            color: var(--color-primary);
-            font-weight: bold;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: var(--spacing-md);
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--color-primary);
-            font-weight: 500;
-            transition: var(--transition);
-            padding: var(--spacing-xs) 0;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--color-secondary);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background-color: var(--color-secondary);
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 24px;
-            color: var(--color-primary);
-            cursor: pointer;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: calc(var(--spacing-xl) + 80px) 0 var(--spacing-xl);
-            background: linear-gradient(135deg, var(--color-light) 0%, var(--color-white) 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            right: -100px;
-            width: 500px;
-            height: 500px;
-            background-color: var(--color-secondary);
-            border-radius: 50%;
-            opacity: 0.2;
-            z-index: 0;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            left: -100px;
-            width: 400px;
-            height: 400px;
-            background-color: var(--color-primary);
-            border-radius: 50%;
-            opacity: 0.1;
-            z-index: 0;
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: var(--spacing-lg);
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-text {
-            flex: 1;
-        }
-
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .hero-image img {
-            max-width: 100%;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
-
-        .hero-title {
-            font-family: 'Imprima', sans-serif;
-            font-size: 3.5rem;
-            color: var(--color-primary);
-            margin-bottom: var(--spacing-sm);
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--color-gray);
-            margin-bottom: var(--spacing-md);
-            max-width: 600px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background-color: var(--color-primary);
-            color: var(--color-white);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--color-secondary);
-            color: var(--color-primary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(6, 27, 176, 0.2);
-        }
-
-        .btn-secondary {
-            background-color: var(--color-secondary);
-            color: var(--color-primary);
-            margin-left: var(--spacing-sm);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(192, 202, 255, 0.3);
-        }
-
-        /* Features Section */
-        .section {
-            padding: var(--spacing-xl) 0;
-        }
-
-        .section-title {
-            font-family: 'Imprima', sans-serif;
-            font-size: 2.5rem;
-            color: var(--color-primary);
-            text-align: center;
-            margin-bottom: var(--spacing-md);
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--color-gray);
-            max-width: 700px;
-            margin: 0 auto var(--spacing-lg);
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--spacing-md);
-        }
-
-        .feature-card {
-            background-color: var(--color-white);
-            border-radius: var(--border-radius);
-            padding: var(--spacing-md);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            text-align: center;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(6, 27, 176, 0.15);
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background-color: var(--color-secondary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto var(--spacing-sm);
-            color: var(--color-primary);
-            font-size: 28px;
-        }
-
-        .feature-title {
-            font-size: 1.5rem;
-            color: var(--color-primary);
-            margin-bottom: var(--spacing-sm);
-        }
-
-        /* About Section */
-        .about {
-            background-color: var(--color-light);
-        }
-
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-lg);
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .about-image img {
-            max-width: 100%;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
-
-        /* Team Section */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--spacing-md);
-        }
-
-        .team-member {
-            background-color: var(--color-white);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-        }
-
-        .team-member:hover {
-            transform: translateY(-10px);
-        }
-
-        .member-image {
-            height: 250px;
-            background-color: var(--color-secondary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--color-primary);
-            font-size: 80px;
-        }
-
-        .member-info {
-            padding: var(--spacing-md);
-        }
-
-        .member-name {
-            font-size: 1.3rem;
-            color: var(--color-primary);
-            margin-bottom: 5px;
-        }
-
-        .member-role {
-            color: var(--color-gray);
-            font-weight: 500;
-            margin-bottom: var(--spacing-sm);
-        }
-
-        /* Contact Section */
-        .contact {
-            background-color: var(--color-light);
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: var(--color-white);
-            padding: var(--spacing-md);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-        }
-
-        .form-group {
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: var(--color-primary);
-            font-weight: 500;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #ddd;
-            border-radius: var(--border-radius);
-            font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 3px rgba(6, 27, 176, 0.1);
-        }
-
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--color-primary);
-            color: var(--color-white);
-            padding: var(--spacing-lg) 0;
-        }
-
-        .footer-content {
+            background-color: #c0caff; /* Nuevo color de fondo */
+            color: #333;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
+            padding: 20px;
         }
-
-        .footer-logo {
+        
+        .container {
+            max-width: 900px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        /* Logo styling - AZUL #061bb0 */
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        
+        .logo {
+            width: 200px;
+            height: auto;
+            filter: brightness(0) saturate(100%) invert(12%) sepia(89%) saturate(3735%) hue-rotate(232deg) brightness(97%) contrast(105%);
+            /* Filtro para convertir el logo a tono azul #061bb0 */
+        }
+        
+        /* Título "Hanabi" - NEGRO */
+        @font-face {
+            font-family: 'Imprima';
+            src: url('https://raw.githubusercontent.com/hhanabi/web/main/Imprima.ttf');
+        }
+        
+        .title {
+            font-family: 'Imprima', sans-serif;
+            font-size: 4.5rem;
+            color: #000000;
+            text-align: center;
+            margin-bottom: 5px;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Slogan - NEGRO y minúscula (sin text-transform) */
+        .slogan {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            color: #000000;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            /* text-transform removido para mantener minúscula */
+            opacity: 0.8;
+        }
+        
+        /* Botones y menús */
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            width: 100%;
+        }
+        
+        .button-wrapper {
+            position: relative;
+        }
+        
+        /* Botones BLANCOS con texto NEGRO */
+        .main-button {
+            background-color: #ffffff; /* Cambiado a blanco */
+            color: #000000; /* Cambiado a negro */
+            border: none;
+            padding: 16px 30px;
+            font-size: 1.1rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
+            min-width: 220px;
             display: flex;
             align-items: center;
-            gap: var(--spacing-sm);
-            margin-bottom: var(--spacing-md);
+            justify-content: space-between;
+            position: relative;
+            border: 2px solid rgba(6, 27, 176, 0.1); /* Borde sutil azul */
         }
-
-        .footer-logo img {
-            height: 40px;
-            width: auto;
+        
+        .main-button:hover {
+            background-color: #f8f9ff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border-color: rgba(6, 27, 176, 0.2); /* Borde más visible al hover */
         }
-
-        .footer-logo .logo-text {
-            color: var(--color-white);
-            font-size: 24px;
-        }
-
-        .footer-links {
+        
+        /* Estructura interna del botón */
+        .button-content {
             display: flex;
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-md);
-            list-style: none;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
         }
-
-        .footer-links a {
-            color: var(--color-secondary);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: var(--color-white);
-        }
-
-        .social-icons {
+        
+        .button-left {
             display: flex;
-            gap: var(--spacing-sm);
-            margin-bottom: var(--spacing-md);
+            align-items: center;
+            gap: 12px;
         }
-
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
+        
+        .button-center {
+            flex-grow: 1;
+            text-align: center;
+            margin: 0 15px;
+        }
+        
+        .button-right {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--color-white);
-            text-decoration: none;
-            transition: var(--transition);
+            width: 24px;
         }
-
-        .social-icon:hover {
-            background-color: var(--color-secondary);
-            color: var(--color-primary);
-            transform: translateY(-3px);
+        
+        /* Icono izquierdo - AZUL */
+        .button-left i {
+            font-size: 1.3rem;
+            color: #061bb0; /* Iconos en azul */
         }
-
-        .copyright {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
+        
+        /* Flecha "v" hacia abajo - derecha - NEGRA */
+        .chevron-down {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-right: 2px solid #000000; /* Cambiada a negro */
+            border-bottom: 2px solid #000000; /* Cambiada a negro */
+            transform: rotate(45deg);
+            transition: transform 0.3s ease;
         }
-
-        /* Responsive Design */
-        @media (max-width: 992px) {
-            .hero-content, .about-content {
-                flex-direction: column;
-            }
-            
-            .hero-title {
-                font-size: 2.8rem;
-            }
-            
-            .section-title {
-                font-size: 2.2rem;
-            }
+        
+        .button-wrapper:hover .chevron-down {
+            transform: rotate(225deg);
         }
-
+        
+        /* Menús desplegables - mantienen estilo original */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            min-width: 240px;
+            border-radius: 10px;
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+        
+        .button-wrapper:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu ul {
+            list-style: none;
+        }
+        
+        .dropdown-menu li {
+            padding: 14px 20px;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.2s ease;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .dropdown-menu li:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-menu li:hover {
+            background-color: #f8f9ff;
+            color: #061bb0;
+            padding-left: 25px;
+        }
+        
+        .dropdown-menu li i {
+            width: 18px;
+            text-align: center;
+            color: #888;
+        }
+        
+        .dropdown-menu li:hover i {
+            color: #061bb0;
+        }
+        
+        /* Responsive design */
         @media (max-width: 768px) {
-            .nav-links {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background-color: var(--color-white);
-                flex-direction: column;
-                align-items: center;
-                padding: var(--spacing-md) 0;
-                gap: var(--spacing-sm);
-                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-                transform: translateY(-100%);
-                opacity: 0;
-                visibility: hidden;
-                transition: var(--transition);
-                z-index: 999;
+            .title {
+                font-size: 3.8rem;
             }
             
-            .nav-links.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            .menu-toggle {
-                display: block;
-            }
-            
-            .hero-title {
-                font-size: 2.3rem;
-            }
-            
-            .hero {
-                padding: calc(var(--spacing-lg) + 80px) 0 var(--spacing-lg);
-            }
-            
-            .section {
-                padding: var(--spacing-lg) 0;
-            }
-            
-            .footer-links {
-                flex-direction: column;
-                gap: var(--spacing-sm);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .btn {
-                padding: 10px 20px;
+            .slogan {
                 font-size: 0.9rem;
             }
             
-            .btn-secondary {
-                margin-left: 0;
-                margin-top: var(--spacing-sm);
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
             }
             
-            .hero-buttons {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
+            .button-wrapper {
+                width: 90%;
             }
+            
+            .main-button {
+                width: 100%;
+                min-width: auto;
+            }
+            
+            .dropdown-menu {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 3.2rem;
+            }
+            
+            .logo {
+                width: 150px;
+            }
+            
+            .button-wrapper {
+                width: 100%;
+            }
+            
+            .slogan {
+                font-size: 0.85rem;
+                margin-bottom: 40px;
+            }
+            
+            .main-button {
+                padding: 14px 20px;
+            }
+            
+            .button-center {
+                margin: 0 10px;
+            }
+        }
+        
+        /* Fondo decorativo - ya no necesario porque el body tiene el color */
+        .background-decor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #c0caff; /* Mismo color que el body */
+            z-index: -1;
+        }
+        
+        /* Información adicional */
+        .info {
+            margin-top: 70px;
+            text-align: center;
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            max-width: 600px;
+            line-height: 1.5;
+            padding: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Efecto especial para el título - sin línea después (removido) */
+        .title-container {
+            position: relative;
+            margin-bottom: 5px;
+        }
+        
+        /* Efecto sutil para el logo */
+        .logo-container img {
+            transition: transform 0.5s ease;
+        }
+        
+        .logo-container img:hover {
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
-    <!-- Header y Navegación -->
-    <header>
-        <div class="container nav-container">
-            <div class="logo-container">
-                <img src="https://raw.githubusercontent.com/hhanabi/web/refs/heads/main/hanabi.svg" alt="Logo Hanabi" class="logo">
-                <div class="logo-text">Hanabi</div>
-            </div>
-            
-            <button class="menu-toggle" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#caracteristicas">Características</a></li>
-                <li><a href="#acerca">Acerca de</a></li>
-                <li><a href="#equipo">Equipo</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
+    <div class="background-decor"></div>
+    
+    <div class="container">
+        <!-- Logo - AZUL #061bb0 -->
+        <div class="logo-container">
+            <img src="https://raw.githubusercontent.com/hhanabi/web/refs/heads/main/hanabi.svg" alt="Hanabi Logo" class="logo">
         </div>
-    </header>
-
-    <!-- Sección Hero -->
-    <section class="hero" id="inicio">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <h1 class="hero-title">Proyecto Hanabi</h1>
-                <p class="hero-subtitle">Una innovadora solución que combina tecnología de vanguardia con diseño intuitivo para transformar la forma en que interactuamos con la información digital. Hanabi significa "fuegos artificiales" en japonés, reflejando la belleza y el impacto de nuestra tecnología.</p>
-                <div class="hero-buttons">
-                    <a href="#contacto" class="btn btn-primary">Comienza ahora</a>
-                    <a href="#caracteristicas" class="btn btn-secondary">Conoce más</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Tecnología innovadora">
-            </div>
+        
+        <!-- Título - NEGRO -->
+        <div class="title-container">
+            <h1 class="title">Hanabi</h1>
         </div>
-    </section>
-
-    <!-- Sección Características -->
-    <section class="section" id="caracteristicas">
-        <div class="container">
-            <h2 class="section-title">Características Principales</h2>
-            <p class="section-subtitle">Descubre las funcionalidades que hacen de Hanabi una solución única en el mercado tecnológico actual.</p>
+        
+        <!-- Slogan - NEGRO y minúscula -->
+        <p class="slogan">where lavender makes sense</p>
+        
+        <!-- Botones con menús desplegables -->
+        <div class="buttons-container">
+            <!-- Botón Catalogos -->
+            <div class="button-wrapper">
+                <button class="main-button" id="catalog-btn">
+                    <div class="button-content">
+                        <div class="button-left">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="button-center">
+                            Catalogos
+                        </div>
+                        <div class="button-right">
+                            <span class="chevron-down"></span>
+                        </div>
+                    </div>
+                </button>
+                <div class="dropdown-menu" id="catalog-menu">
+                    <ul>
+                        <li><i class="fas fa-gamepad"></i> Gaming</li>
+                        <li><i class="fas fa-laptop-code"></i> Software</li>
+                        <li><i class="fas fa-stream"></i> Streaming</li>
+                    </ul>
+                </div>
+            </div>
             
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
+            <!-- Botón Elementos -->
+            <div class="button-wrapper">
+                <button class="main-button" id="elements-btn">
+                    <div class="button-content">
+                        <div class="button-left">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <div class="button-center">
+                            Elementos
+                        </div>
+                        <div class="button-right">
+                            <span class="chevron-down"></span>
+                        </div>
                     </div>
-                    <h3 class="feature-title">Rendimiento Óptimo</h3>
-                    <p>Optimizado para ofrecer la máxima velocidad y eficiencia en cada operación, reduciendo los tiempos de espera al mínimo.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Seguridad Avanzada</h3>
-                    <p>Protección de datos de última generación con cifrado de extremo a extremo y autenticación multifactor.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3 class="feature-title">Diseño Intuitivo</h3>
-                    <p>Interfaz limpia y fácil de usar que se adapta a las necesidades tanto de principiantes como de usuarios avanzados.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Integración Total</h3>
-                    <p>Conecta sin problemas con tus herramientas existentes y sistemas para un flujo de trabajo perfecto.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="feature-title">Analíticas en Tiempo Real</h3>
-                    <p>Obtén insights valiosos con dashboards personalizables y reportes detallados de tu actividad.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-expand-arrows-alt"></i>
-                    </div>
-                    <h3 class="feature-title">Escalabilidad Ilimitada</h3>
-                    <p>Crece a tu ritmo con una infraestructura que se adapta a tus necesidades cambiantes sin interrupciones.</p>
+                </button>
+                <div class="dropdown-menu" id="elements-menu">
+                    <ul>
+                        <li><i class="fas fa-list-alt"></i> Catalogo</li>
+                        <li><i class="fas fa-bullhorn"></i> Publicidad</li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Sección Acerca de -->
-    <section class="section about" id="acerca">
-        <div class="container about-content">
-            <div class="about-text">
-                <h2 class="section-title">Acerca de Hanabi</h2>
-                <p>Hanabi nació de la visión de crear tecnología que no solo sea funcional, sino también inspiradora. Nuestro equipo de expertos en diversas disciplinas trabajó durante años para desarrollar una plataforma que revolucione la interacción digital.</p>
-                <p>Inspirados por la belleza efímera pero impactante de los fuegos artificiales, buscamos crear experiencias digitales memorables que dejen una impresión duradera en nuestros usuarios.</p>
-                <p>Hoy, Hanabi es utilizado por más de 10,000 empresas en todo el mundo, desde startups innovadoras hasta corporaciones establecidas, todas beneficiándose de nuestro enfoque único en el diseño centrado en el usuario y la tecnología de vanguardia.</p>
-                <a href="#contacto" class="btn btn-primary" style="margin-top: var(--spacing-sm);">Únete a la revolución</a>
-            </div>
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Equipo Hanabi trabajando">
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Equipo -->
-    <section class="section" id="equipo">
-        <div class="container">
-            <h2 class="section-title">Nuestro Equipo</h2>
-            <p class="section-subtitle">Conoce a las mentes creativas detrás del proyecto Hanabi, un equipo diverso de expertos apasionados por la innovación.</p>
-            
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="member-image">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Alex Chen</h3>
-                        <p class="member-role">Fundador & CEO</p>
-                        <p>Visionario tecnológico con más de 15 años de experiencia en el desarrollo de software innovador.</p>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="member-image">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Maya Rodríguez</h3>
-                        <p class="member-role">Directora de Diseño</p>
-                        <p>Especialista en experiencia de usuario y diseño de interfaces con enfoque en la accesibilidad.</p>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="member-image">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Kenji Tanaka</h3>
-                        <p class="member-role">Líder de Desarrollo</p>
-                        <p>Ingeniero de software con expertise en arquitecturas escalables y tecnologías emergentes.</p>
-                    </div>
-                </div>
-                
-                <div class="team-member">
-                    <div class="member-image">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="member-info">
-                        <h3 class="member-name">Sofia Petrova</h3>
-                        <p class="member-role">Jefa de Seguridad</p>
-                        <p>Experta en ciberseguridad y protección de datos con certificaciones internacionales.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Contacto -->
-    <section class="section contact" id="contacto">
-        <div class="container">
-            <h2 class="section-title">Contáctanos</h2>
-            <p class="section-subtitle">¿Tienes preguntas sobre Hanabi? Nos encantaría saber de ti. Completa el formulario y nos pondremos en contacto contigo pronto.</p>
-            
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Nombre completo</label>
-                        <input type="text" id="name" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Correo electrónico</label>
-                        <input type="email" id="email" class="form-control" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="company">Empresa (opcional)</label>
-                        <input type="text" id="company" class="form-control">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Mensaje</label>
-                        <textarea id="message" class="form-control" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar mensaje</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <img src="https://raw.githubusercontent.com/hhanabi/web/refs/heads/main/hanabi.svg" alt="Logo Hanabi">
-                    <div class="logo-text">Hanabi</div>
-                </div>
-                
-                <ul class="footer-links">
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#caracteristicas">Características</a></li>
-                    <li><a href="#acerca">Acerca de</a></li>
-                    <li><a href="#equipo">Equipo</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-                
-                <div class="social-icons">
-                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                </div>
-                
-                <p class="copyright">© 2023 Proyecto Hanabi. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // JavaScript para funcionalidades interactivas
-        document.addEventListener('DOMContentLoaded', function() {
-            // Menu toggle para móviles
-            const menuToggle = document.getElementById('menuToggle');
-            const navLinks = document.getElementById('navLinks');
-            
-            menuToggle.addEventListener('click', function() {
-                navLinks.classList.toggle('active');
-                const icon = menuToggle.querySelector('i');
-                if (navLinks.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-            
-            // Cerrar menú al hacer clic en un enlace
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                    menuToggle.querySelector('i').classList.remove('fa-times');
-                    menuToggle.querySelector('i').classList.add('fa-bars');
-                });
-            });
-            
-            // Smooth scrolling para enlaces internos
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Manejo del formulario de contacto
-            const contactForm = document.getElementById('contactForm');
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Obtener valores del formulario
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const message = document.getElementById('message').value;
-                
-                // Simular envío del formulario
-                console.log('Formulario enviado:', { name, email, message });
-                
-                // Mostrar mensaje de éxito
-                alert('¡Gracias por contactarnos, ' + name + '! Hemos recibido tu mensaje y nos pondremos en contacto contigo pronto.');
-                
-                // Resetear formulario
-                contactForm.reset();
-            });
-            
-            // Efecto de animación para las tarjetas al hacer scroll
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animate-in');
-                    }
-                });
-            }, observerOptions);
-            
-            // Observar elementos para animación
-            document.querySelectorAll('.feature-card, .team-member').forEach(card => {
-                observer.observe(card);
-            });
-            
-            // Añadir estilos para animación
-            const style = document.createElement('style');
-            style.textContent = `
-                .feature-card, .team-member {
-                    opacity: 0;
-                    transform: translateY(20px);
-                    transition: opacity 0.5s ease, transform 0.5s ease;
-                }
-                
-                .feature-card.animate-in, .team-member.animate-in {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-                
-                .feature-card:nth-child(1) { transition-delay: 0.1s; }
-                .feature-card:nth-child(2) { transition-delay: 0.2s; }
-                .feature-card:nth-child(3) { transition-delay: 0.3s; }
-                .feature-card:nth-child(4) { transition-delay: 0.4s; }
-                .feature-card:nth-child(5) { transition-delay: 0.5s; }
-                .feature-card:nth-child(6) { transition-delay: 0.6s; }
-                
-                .team-member:nth-child(1) { transition-delay: 0.1s; }
-                .team-member:nth-child(2) { transition-delay: 0.2s; }
-                .team-member:nth-child(3) { transition-delay: 0.3s; }
-                .team-member:nth-child(4) { transition-delay: 0.4s; }
-            `;
-            document.head.appendChild(style);
-        });
-    </script>
-</body>
-</html>
+        
+        <!-- Información adicional -->
+        <div class="info">
+            <p>Hanabi ofrece soluciones digitales innovadoras en múltiples categorías. Explora nuestros catalogos y elementos para descubrir todo lo que tenemos para ofrecerte.</
