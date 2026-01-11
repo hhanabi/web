@@ -12,14 +12,14 @@ body {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: #ffffff;
+    background-color: #ffffff; /* Fondo blanco para toda la página */
 }
 
-/* HERO SECTION - MODIFICADO PARA MÓVIL */
+/* HERO SECTION - FONDO LAVANDA EXPANDIDO */
 .hero-section {
-    background-color: #c0caff;
+    background-color: #c0caff; /* Color lavanda para el hero */
     width: 100%;
-    min-height: 110vh;
+    min-height: 110vh; /* Expandido hacia abajo */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -49,6 +49,7 @@ body {
     width: 200px;
     height: auto;
     filter: brightness(0) saturate(100%) invert(12%) sepia(89%) saturate(3735%) hue-rotate(232deg) brightness(97%) contrast(105%);
+    /* Filtro para convertir el logo a tono azul #061bb0 */
 }
 
 /* Título "Hanabi" - NEGRO */
@@ -67,7 +68,7 @@ body {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Slogan - NEGRO y minúscula */
+/* Slogan - NEGRO y minúscula (sin text-transform) */
 .slogan {
     font-family: 'Poppins', sans-serif;
     font-size: 0.95rem;
@@ -76,6 +77,7 @@ body {
     margin-bottom: 50px;
     font-weight: 400;
     letter-spacing: 0.5px;
+    /* text-transform removido para mantener minúscula */
     opacity: 0.8;
 }
 
@@ -96,8 +98,8 @@ body {
 
 /* Botones BLANCOS con texto NEGRO */
 .main-button {
-    background-color: #ffffff;
-    color: #000000;
+    background-color: #ffffff; /* Cambiado a blanco */
+    color: #000000; /* Cambiado a negro */
     border: none;
     padding: 16px 30px;
     font-size: 1.1rem;
@@ -106,22 +108,23 @@ body {
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Sombra más sutil */
     min-width: 220px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
-    border: 2px solid rgba(6, 27, 176, 0.1);
+    border: 2px solid rgba(6, 27, 176, 0.1); /* Borde sutil azul */
 }
 
 .main-button:hover {
     background-color: #f8f9ff;
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    border-color: rgba(6, 27, 176, 0.2);
+    border-color: rgba(6, 27, 176, 0.2); /* Borde más visible al hover */
 }
 
+/* Estructura interna del botón */
 .button-content {
     display: flex;
     align-items: center;
@@ -148,17 +151,19 @@ body {
     width: 24px;
 }
 
+/* Icono izquierdo - AZUL */
 .button-left i {
     font-size: 1.3rem;
-    color: #061bb0;
+    color: #061bb0; /* Iconos en azul */
 }
 
+/* Flecha "v" hacia abajo - derecha - NEGRA */
 .chevron-down {
     display: inline-block;
     width: 10px;
     height: 10px;
-    border-right: 2px solid #000000;
-    border-bottom: 2px solid #000000;
+    border-right: 2px solid #000000; /* Cambiada a negro */
+    border-bottom: 2px solid #000000; /* Cambiada a negro */
     transform: rotate(45deg);
     transition: transform 0.3s ease;
 }
@@ -167,6 +172,7 @@ body {
     transform: rotate(225deg);
 }
 
+/* Menús desplegables - mantienen estilo original */
 .dropdown-menu {
     position: absolute;
     top: 100%;
@@ -237,11 +243,13 @@ body {
     color: #061bb0;
 }
 
+/* CONTENIDO PRINCIPAL CON FONDO BLANCO */
 .main-content {
     width: 100%;
     background-color: #ffffff;
 }
 
+/* SECCIONES BLANCAS */
 .white-section {
     width: 100%;
     padding: 60px 20px;
@@ -281,6 +289,7 @@ body {
     line-height: 1.7;
 }
 
+/* Justificación óptica para párrafos */
 .justified-text {
     text-align: justify;
     text-justify: inter-word;
@@ -290,6 +299,7 @@ body {
     color: #444;
 }
 
+/* Grid de características */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -338,6 +348,7 @@ body {
     font-size: 0.95rem;
 }
 
+/* COMPARACIÓN DE ROLES */
 .roles-comparison {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -453,7 +464,7 @@ body {
     font-size: 0.95rem;
 }
 
-/* Requisitos - MEJORADO */
+/* Requisitos */
 .requirements {
     background-color: #f8f9ff;
     border-radius: 12px;
@@ -489,13 +500,6 @@ body {
 
 .requirements-list li i {
     color: #061bb0;
-    flex-shrink: 0;
-}
-
-/* Clase para el texto de requisitos */
-.requirement-text {
-    display: flex;
-    flex-direction: column;
 }
 
 /* Beneficios */
@@ -521,7 +525,7 @@ body {
     border-radius: 10px;
     padding: 20px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 15px;
     transition: all 0.3s ease;
 }
@@ -534,16 +538,14 @@ body {
 .benefit-item i {
     font-size: 1.5rem;
     color: #061bb0;
-    flex-shrink: 0;
-    margin-top: 3px;
 }
 
 .benefit-item span {
     font-weight: 500;
     color: #333;
-    line-height: 1.4;
 }
 
+/* CTA para afiliados */
 .cta-affiliate {
     background: linear-gradient(135deg, #061bb0 0%, #4d7cff 100%);
     border-radius: 15px;
@@ -589,6 +591,7 @@ body {
     box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
 }
 
+/* Equipo */
 .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -638,6 +641,7 @@ body {
     line-height: 1.6;
 }
 
+/* Horarios */
 .schedule-container {
     background-color: #f8f9ff;
     border-radius: 15px;
@@ -677,6 +681,7 @@ body {
     gap: 10px;
 }
 
+/* Productos */
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -735,6 +740,7 @@ body {
     line-height: 1.6;
 }
 
+/* Pie de página */
 .footer {
     width: 100%;
     background-color: #061bb0;
@@ -782,6 +788,7 @@ body {
     filter: brightness(0) invert(1);
 }
 
+/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -872,10 +879,7 @@ body {
     background-color: #4d7cff;
 }
 
-/* =========================================== */
-/* RESPONSIVE DESIGN - MODIFICADO */
-/* =========================================== */
-
+/* RESPONSIVE DESIGN - OPTIMIZADO PARA MÓVIL */
 @media (max-width: 992px) {
     .section-container {
         max-width: 95%;
@@ -886,59 +890,26 @@ body {
     }
 }
 
-/* MODIFICACIÓN PRINCIPAL PARA HERO EN MÓVIL */
 @media (max-width: 768px) {
-    /* MODIFICACIÓN HERO: Distribución vertical con elementos separados */
     .hero-section {
-        height: 80vh; /* Ocupa exactamente el 80% de la pantalla */
-        min-height: auto;
-        padding: 15px 15px 40px;
-        justify-content: space-between; /* Distribuye el espacio uniformemente */
-        overflow: hidden; /* Evita desbordamientos */
-    }
-    
-    .hero-container {
-        margin-top: 0;
-        padding-top: 10px;
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        justify-content: space-between; /* Distribuye elementos internos */
-    }
-    
-    /* Agrupa logo, título y slogan en la parte superior */
-    .logo-container {
-        margin-bottom: 5px;
-        margin-top: 10px;
-    }
-    
-    .logo {
-        width: 140px;
-        margin-top: 0;
+        min-height: 100vh; /* Ajustado para mantener proporción */
+        padding: 20px 15px;
     }
     
     .title {
-        font-size: 2.8rem;
-        margin-top: 5px;
-        margin-bottom: 8px;
-        line-height: 1.1;
+        font-size: 3.3rem;
     }
     
     .slogan {
-        font-size: 0.85rem;
-        margin-bottom: 0; /* Eliminamos el margen inferior grande */
-        line-height: 1.4;
-        padding: 0 10px;
+        font-size: 0.9rem;
+        margin-bottom: 40px;
     }
     
-    /* Botones en la parte inferior con espacio */
     .buttons-container {
         flex-direction: column;
         align-items: center;
-        gap: 15px;
-        margin-top: auto; /* Empuja los botones hacia abajo */
-        margin-bottom: 30px; /* Más espacio en la parte inferior */
-        width: 100%;
+        gap: 20px;
+        margin-bottom: 30px;
     }
     
     .button-wrapper {
@@ -949,48 +920,30 @@ body {
     .main-button {
         width: 100%;
         min-width: auto;
-        padding: 14px 15px;
-        font-size: 1rem;
+        padding: 14px 20px;
     }
     
     .dropdown-menu {
         width: 100%;
     }
     
-    /* Resto de estilos responsive */
     .white-section {
-        padding: 30px 15px;
+        padding: 40px 15px;
     }
     
     .section-header h2 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
         flex-direction: column;
-        gap: 8px;
-        margin-bottom: 20px;
-    }
-    
-    .section-subtitle {
-        font-size: 0.95rem;
+        gap: 10px;
     }
     
     .roles-comparison {
         grid-template-columns: 1fr;
-        gap: 20px;
-        margin-top: 25px;
+        gap: 25px;
     }
     
     .role-card {
-        padding: 20px 15px;
-    }
-    
-    .role-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.8rem;
-    }
-    
-    .role-card h3 {
-        font-size: 1.3rem;
+        padding: 25px 20px;
     }
     
     .features-grid,
@@ -998,135 +951,87 @@ body {
     .team-grid,
     .products-grid {
         grid-template-columns: 1fr;
-        gap: 20px;
-        margin-top: 25px;
-    }
-    
-    .feature-card,
-    .product-card {
-        padding: 20px;
-    }
-    
-    .feature-icon {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .feature-icon i {
-        font-size: 1.5rem;
-    }
-    
-    .feature-card h3,
-    .product-card h3 {
-        font-size: 1.2rem;
-    }
-    
-    /* MODIFICACIÓN REQUISITOS: Apilados verticalmente */
-    .requirements {
-        padding: 20px;
-        margin: 20px 0;
-    }
-    
-    .requirements h3 {
-        font-size: 1.2rem;
-        margin-bottom: 15px;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
-    
-    .requirements-list li {
-        padding: 10px 0;
-        font-size: 0.95rem;
-        flex-direction: column; /* Cambiado a columna para apilar */
-        align-items: flex-start;
-        gap: 5px; /* Espacio reducido entre líneas */
-    }
-    
-    .requirements-list li i {
-        font-size: 1rem;
-        margin-bottom: 2px;
-    }
-    
-    /* Estilo para el texto de requisitos */
-    .requirement-text {
-        display: block;
-    }
-    
-    .requirements-list li .requirement-text span {
-        display: block;
-        line-height: 1.4;
-    }
-    
-    .requirements-list li .requirement-text span:first-child {
-        font-weight: 600;
-        color: #061bb0;
-    }
-    
-    .requirements-list li .requirement-text span:last-child {
-        color: #333;
-        margin-top: 2px;
-    }
-    
-    /* BENEFICIOS */
-    .benefits {
-        margin-top: 30px;
-    }
-    
-    .benefits h3 {
-        font-size: 1.2rem;
-        margin-bottom: 15px;
-    }
-    
-    .benefits-grid {
-        gap: 12px;
-    }
-    
-    .benefit-item {
-        padding: 15px;
-        align-items: flex-start;
-    }
-    
-    .benefit-item i {
-        font-size: 1.2rem;
-        margin-top: 2px;
-    }
-    
-    .benefit-item span {
-        font-size: 0.95rem;
-        line-height: 1.3;
+        gap: 25px;
     }
     
     .schedule-days {
         flex-direction: column;
         align-items: center;
-        gap: 20px;
+        gap: 25px;
     }
     
     .day-card {
         width: 100%;
         min-width: auto;
-        padding: 20px;
     }
     
     .cta-affiliate {
-        padding: 25px 15px;
-        margin-top: 30px;
-    }
-    
-    .cta-affiliate h3 {
-        font-size: 1.4rem;
-        flex-direction: column;
-        gap: 10px;
+        padding: 30px 20px;
     }
     
     .cta-button {
         padding: 12px 25px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        padding: 20px 10px;
+    }
+    
+    .title {
+        font-size: 2.8rem;
+    }
+    
+    .logo {
+        width: 150px;
+    }
+    
+    .slogan {
+        font-size: 0.85rem;
+        margin-bottom: 30px;
+    }
+    
+    .button-wrapper {
+        width: 100%;
+    }
+    
+    .button-center {
+        margin: 0 10px;
+    }
+    
+    .white-section {
+        padding: 30px 10px;
+    }
+    
+    .section-header h2 {
+        font-size: 1.6rem;
+    }
+    
+    .section-subtitle {
         font-size: 1rem;
     }
     
-    .team-member {
-        padding: 20px;
+    .footer {
+        padding: 30px 15px;
+    }
+    
+    .justified-text {
+        font-size: 1rem;
+    }
+    
+    .requirements {
+        padding: 20px 15px;
+    }
+    
+    .requirements-list li {
+        font-size: 1rem;
+        align-items: flex-start;
+    }
+    
+    .benefit-item {
+        padding: 15px;
     }
     
     .member-photo {
@@ -1136,192 +1041,5 @@ body {
     
     .member-photo i {
         font-size: 2.5rem;
-    }
-    
-    .footer {
-        padding: 30px 15px;
-    }
-    
-    .footer-content {
-        gap: 15px;
-    }
-    
-    .footer-info p {
-        font-size: 0.95rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-section {
-        padding: 10px 10px 25px;
-        height: 80vh; /* Mantiene el 80% en pantallas más pequeñas */
-    }
-    
-    .hero-container {
-        justify-content: space-between; /* Mantiene distribución vertical */
-    }
-    
-    .logo-container {
-        margin-bottom: 5px;
-        margin-top: 5px;
-    }
-    
-    .logo {
-        width: 120px;
-    }
-    
-    .title {
-        font-size: 2.3rem;
-        margin-bottom: 5px;
-    }
-    
-    .slogan {
-        font-size: 0.8rem;
-        margin-bottom: 0; /* Mantiene sin margen inferior */
-        padding: 0 5px;
-    }
-    
-    .buttons-container {
-        gap: 12px;
-        margin-top: auto; /* Sigue empujando hacia abajo */
-        margin-bottom: 20px; /* Espacio inferior adecuado */
-    }
-    
-    .button-wrapper {
-        max-width: 280px;
-    }
-    
-    .main-button {
-        padding: 12px 10px;
-        font-size: 0.95rem;
-    }
-    
-    .button-left i {
-        font-size: 1.1rem;
-    }
-    
-    .button-center {
-        margin: 0 8px;
-    }
-    
-    .white-section {
-        padding: 25px 10px;
-    }
-    
-    .section-header h2 {
-        font-size: 1.4rem;
-    }
-    
-    .justified-text {
-        font-size: 0.95rem;
-        line-height: 1.5;
-    }
-    
-    /* REQUISITOS - EXTRA PEQUEÑO */
-    .requirements {
-        padding: 15px;
-    }
-    
-    .requirements h3 {
-        font-size: 1.1rem;
-        margin-bottom: 12px;
-    }
-    
-    .requirements-list li {
-        font-size: 0.9rem;
-        padding: 8px 0;
-        gap: 8px;
-    }
-    
-    .requirements-list li .requirement-text span:first-child {
-        font-size: 0.9rem;
-    }
-    
-    .requirements-list li .requirement-text span:last-child {
-        font-size: 0.85rem;
-    }
-    
-    /* BENEFICIOS - EXTRA PEQUEÑO */
-    .benefits h3 {
-        font-size: 1.1rem;
-        margin-bottom: 12px;
-    }
-    
-    .benefits-grid {
-        gap: 10px;
-    }
-    
-    .benefit-item {
-        padding: 12px;
-    }
-    
-    .benefit-item i {
-        font-size: 1.1rem;
-    }
-    
-    .benefit-item span {
-        font-size: 0.9rem;
-    }
-    
-    .member-photo {
-        width: 90px;
-        height: 90px;
-    }
-    
-    .member-photo i {
-        font-size: 2rem;
-    }
-    
-    .team-member h3 {
-        font-size: 1.2rem;
-    }
-    
-    .member-role {
-        font-size: 0.95rem;
-    }
-    
-    .footer {
-        padding: 25px 10px;
-    }
-    
-    .novaklar-logo {
-        width: 70px;
-    }
-}
-
-/* Reglas adicionales para dispositivos muy pequeños */
-@media (max-width: 360px) {
-    .hero-section {
-        height: 80vh; /* Mantiene altura del 80% */
-    }
-    
-    .title {
-        font-size: 2rem;
-    }
-    
-    .logo {
-        width: 100px;
-    }
-    
-    .buttons-container {
-        margin-bottom: 15px;
-    }
-    
-    .main-button {
-        padding: 10px 8px;
-        font-size: 0.9rem;
-    }
-    
-    /* Mantener requisitos en columna incluso en pantallas muy pequeñas */
-    .requirements-list li {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
-    
-    .benefit-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
     }
 }
