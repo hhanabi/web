@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Hanabi - Subsidiaria de Novaklar</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
 </head>
 <body>
     <!-- Hero Section con fondo lavanda -->
-    <section class="hero-section">
+    <section class="hero-section" id="hero">
         <div class="hero-container">
             <!-- Logo - AZUL #061bb0 -->
             <div class="logo-container">
@@ -209,10 +209,22 @@
                     <div class="requirements">
                         <h3><i class="fas fa-clipboard-check"></i> Requisitos para Afiliarte</h3>
                         <ul class="requirements-list">
-                            <li><i class="fas fa-check-circle"></i> Tener mínimo <strong>13 años de edad</strong></li>
-                            <li><i class="fas fa-check-circle"></i> Contar con una cuenta activa en <strong>Nequi o DaviPlata</strong></li>
-                            <li><i class="fas fa-check-circle"></i> Acceso a internet y dispositivo móvil o computadora</li>
-                            <li><i class="fas fa-check-circle"></i> Motivación para emprender y generar ingresos</li>
+                            <li>
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                <span class="req-text">Tener mínimo <strong>13 años de edad</strong></span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                <span class="req-text">Contar con una cuenta activa en <strong>Nequi</strong> o <strong>DaviPlata</strong></span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                <span class="req-text">Acceso a internet y dispositivo móvil o computadora</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                <span class="req-text">Motivación para emprender y generar ingresos</span>
+                            </li>
                         </ul>
                     </div>
                     
@@ -363,11 +375,11 @@
     </main>
 
     <!-- Modal para unirse como afiliado -->
-    <div class="modal" id="join-modal">
-        <div class="modal-content">
+    <div class="modal" id="join-modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="join-modal-title">
             <div class="modal-header">
-                <h3><i class="fas fa-user-plus"></i> Unirse como Afiliado</h3>
-                <button class="close-modal">&times;</button>
+                <h3 id="join-modal-title"><i class="fas fa-user-plus"></i> Unirse como Afiliado</h3>
+                <button class="close-modal" aria-label="Cerrar modal">&times;</button>
             </div>
             <div class="modal-body">
                 <p>Para unirte como afiliado de Hanabi, contacta a nuestro equipo:</p>
