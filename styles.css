@@ -886,19 +886,30 @@ body {
     }
 }
 
+/* MODIFICACIÓN PRINCIPAL PARA HERO EN MÓVIL */
 @media (max-width: 768px) {
-    /* MODIFICACIÓN HERO: 80% de altura en móvil */
+    /* MODIFICACIÓN HERO: Distribución vertical con elementos separados */
     .hero-section {
         height: 80vh; /* Ocupa exactamente el 80% de la pantalla */
         min-height: auto;
         padding: 15px 15px 40px;
-        justify-content: center;
+        justify-content: space-between; /* Distribuye el espacio uniformemente */
         overflow: hidden; /* Evita desbordamientos */
     }
     
     .hero-container {
         margin-top: 0;
         padding-top: 10px;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-between; /* Distribuye elementos internos */
+    }
+    
+    /* Agrupa logo, título y slogan en la parte superior */
+    .logo-container {
+        margin-bottom: 5px;
+        margin-top: 10px;
     }
     
     .logo {
@@ -915,17 +926,19 @@ body {
     
     .slogan {
         font-size: 0.85rem;
-        margin-bottom: 20px;
+        margin-bottom: 0; /* Eliminamos el margen inferior grande */
         line-height: 1.4;
         padding: 0 10px;
     }
     
+    /* Botones en la parte inferior con espacio */
     .buttons-container {
         flex-direction: column;
         align-items: center;
         gap: 15px;
-        margin-top: 10px;
-        margin-bottom: 15px;
+        margin-top: auto; /* Empuja los botones hacia abajo */
+        margin-bottom: 30px; /* Más espacio en la parte inferior */
+        width: 100%;
     }
     
     .button-wrapper {
@@ -944,6 +957,7 @@ body {
         width: 100%;
     }
     
+    /* Resto de estilos responsive */
     .white-section {
         padding: 30px 15px;
     }
@@ -1139,12 +1153,17 @@ body {
 
 @media (max-width: 480px) {
     .hero-section {
-        padding: 10px 10px 30px;
+        padding: 10px 10px 25px;
         height: 80vh; /* Mantiene el 80% en pantallas más pequeñas */
     }
     
+    .hero-container {
+        justify-content: space-between; /* Mantiene distribución vertical */
+    }
+    
     .logo-container {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
+        margin-top: 5px;
     }
     
     .logo {
@@ -1158,14 +1177,14 @@ body {
     
     .slogan {
         font-size: 0.8rem;
-        margin-bottom: 20px;
+        margin-bottom: 0; /* Mantiene sin margen inferior */
         padding: 0 5px;
     }
     
     .buttons-container {
         gap: 12px;
-        margin-top: 10px;
-        margin-bottom: 10px;
+        margin-top: auto; /* Sigue empujando hacia abajo */
+        margin-bottom: 20px; /* Espacio inferior adecuado */
     }
     
     .button-wrapper {
@@ -1272,12 +1291,20 @@ body {
 
 /* Reglas adicionales para dispositivos muy pequeños */
 @media (max-width: 360px) {
+    .hero-section {
+        height: 80vh; /* Mantiene altura del 80% */
+    }
+    
     .title {
         font-size: 2rem;
     }
     
     .logo {
         width: 100px;
+    }
+    
+    .buttons-container {
+        margin-bottom: 15px;
     }
     
     .main-button {
