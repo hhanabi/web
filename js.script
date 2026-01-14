@@ -71,13 +71,17 @@ document.addEventListener('DOMContentLoaded', function() {
     benefitItems.forEach(item => {
         item.addEventListener('mouseenter', function() {
             const icon = this.querySelector('i');
-            icon.style.transform = 'scale(1.2)';
-            icon.style.transition = 'transform 0.3s ease';
+            if (icon) {
+                icon.style.transform = 'scale(1.2)';
+                icon.style.transition = 'transform 0.3s ease';
+            }
         });
         
         item.addEventListener('mouseleave', function() {
             const icon = this.querySelector('i');
-            icon.style.transform = 'scale(1)';
+            if (icon) {
+                icon.style.transform = 'scale(1)';
+            }
         });
     });
     
