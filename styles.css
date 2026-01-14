@@ -81,7 +81,8 @@ body {
 
 /* -------------------------
    Separador animado con sakura (permanente, visible en todas las pantallas)
-   - Fondo sólido #c0c9ff
+   - Fondo sólido #c0caff (igual que el hero)
+   - Sin contornos ni sombras en el separador para que parezca continuidad
    - Flores mantienen su color original (SVG intacto)
    ------------------------- */
 .section-separator {
@@ -90,9 +91,11 @@ body {
     position: relative;
     z-index: 1;
     overflow: hidden;
-    background: #c0c9ff; /* color sólido solicitado */
+    background: #c0caff; /* ahora exactamente igual que el hero */
     pointer-events: none;
-    box-shadow: 0 -6px 14px rgba(6,27,176,0.03) inset;
+    border: none;
+    box-shadow: none; /* eliminado para evitar contorno/sombra */
+    outline: none;
 }
 
 /* Sakura: usamos cherry.svg directamente como imagen, preservando su color original */
@@ -109,7 +112,8 @@ body {
     will-change: transform, opacity;
     transform-origin: center;
     pointer-events: none;
-    filter: drop-shadow(0 2px 6px rgba(6,27,176,0.08));
+    /* eliminada la sombra para mantener la continuidad visual del separador */
+    filter: none;
     /* animación: loop continuo usando translateX a lo largo del viewport */
     animation-iteration-count: infinite;
     animation-timing-function: linear;
