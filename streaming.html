@@ -26,7 +26,7 @@
     body {
       margin: 0;
       font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f1efee;
+      background-color: #ffffff;
       color: #080a33;
       padding-top: 2rem;
     }
@@ -46,7 +46,7 @@
     }
 
     .logo-container img {
-      height: 140px; /* ¡MUCHO MÁS GRANDE! */
+      height: 140px;
       width: auto;
       filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(2475%) hue-rotate(230deg) brightness(89%) contrast(101%);
     }
@@ -88,7 +88,7 @@
 
     .btn-filled {
       background-color: #080a33;
-      color: #f1efee;
+      color: #ffffff;
       border: 2px solid #080a33;
     }
 
@@ -106,7 +106,7 @@
     .dropdown-content {
       display: none;
       position: absolute;
-      background-color: #f1efee;
+      background-color: #ffffff;
       min-width: 100%;
       box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
       z-index: 1000;
@@ -133,7 +133,7 @@
     }
 
     .dropdown-content a:hover {
-      background-color: #e2e8f0;
+      background-color: #f5f5f5;
     }
 
     .dropdown:hover .dropdown-content {
@@ -178,7 +178,7 @@
     .table-container {
       display: none;
       margin-top: 0.8rem;
-      background-color: #f1efee;
+      background-color: #ffffff;
       border-radius: 0.6rem;
       overflow: hidden;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
@@ -236,7 +236,7 @@
       }
       
       .logo-container img {
-        height: 120px; /* Grande en tablet también */
+        height: 120px;
       }
       
       .controls-buttons {
@@ -261,7 +261,7 @@
       }
       
       .logo-container img {
-        height: 110px; /* Grande en móvil también */
+        height: 110px;
       }
       
       .controls-buttons {
@@ -304,7 +304,7 @@
       }
       
       .logo-container img {
-        height: 100px; /* ¡Todavía grande en móviles pequeños! */
+        height: 100px;
       }
       
       .controls-buttons {
@@ -359,7 +359,6 @@
     const container = document.getElementById('cards-container');
     let currentlyOpenCard = null;
     
-    // Orden de popularidad
     const popularityOrder = [
       "youtube.png",
       "netflix.png", 
@@ -387,55 +386,55 @@
         nombre: "hbo", 
         displayName: "HBO Max",
         imageName: "hbo.png",
-        valores: [{ tipo: "Plan", afiliado: 5500, sugerido: 10000, ganancia: 4500 }]
+        valores: [{ afiliado: 5500, sugerido: 10000, ganancia: 4500 }]
       },
       { 
         nombre: "disney", 
         displayName: "Disney+",
         imageName: "disney.png",
-        valores: [{ tipo: "Plan", afiliado: 7000, sugerido: 10000, ganancia: 3000 }]
+        valores: [{ afiliado: 7000, sugerido: 10000, ganancia: 3000 }]
       },
       { 
         nombre: "paramount", 
         displayName: "Paramount+",
         imageName: "paramount.png",
-        valores: [{ tipo: "Plan", afiliado: 5000, sugerido: 10000, ganancia: 5000 }]
+        valores: [{ afiliado: 5000, sugerido: 10000, ganancia: 5000 }]
       },
       { 
         nombre: "prime", 
         displayName: "Prime Video",
         imageName: "prime.png",
-        valores: [{ tipo: "Plan", afiliado: 5300, sugerido: 10000, ganancia: 4700 }]
+        valores: [{ afiliado: 5300, sugerido: 10000, ganancia: 4700 }]
       },
       { 
         nombre: "viki", 
         displayName: "Viki",
         imageName: "viki.png",
-        valores: [{ tipo: "Plan", afiliado: 5000, sugerido: 10000, ganancia: 5000 }]
+        valores: [{ afiliado: 5000, sugerido: 10000, ganancia: 5000 }]
       },
       { 
         nombre: "youtube", 
         displayName: "YouTube",
         imageName: "youtube.png",
-        valores: [{ tipo: "Plan", afiliado: 8000, sugerido: 12000, ganancia: 4000 }]
+        valores: [{ afiliado: 8000, sugerido: 12000, ganancia: 4000 }]
       },
       { 
         nombre: "crunchyroll", 
         displayName: "Crunchyroll",
         imageName: "crunchyroll.png",
-        valores: [{ tipo: "Plan", afiliado: 5000, sugerido: 10000, ganancia: 5000 }]
+        valores: [{ afiliado: 5000, sugerido: 10000, ganancia: 5000 }]
       },
       { 
         nombre: "vix", 
         displayName: "Vix",
         imageName: "vix.png",
-        valores: [{ tipo: "Plan", afiliado: 5000, sugerido: 10000, ganancia: 5000 }]
+        valores: [{ afiliado: 5000, sugerido: 10000, ganancia: 5000 }]
       },
       { 
         nombre: "spotify", 
         displayName: "Spotify",
         imageName: "spotify.png",
-        valores: [{ tipo: "Plan", afiliado: 11000, sugerido: 14500, ganancia: 3500 }]
+        valores: [{ afiliado: 11000, sugerido: 14500, ganancia: 3500 }]
       }
     ];
 
@@ -452,22 +451,32 @@
         <div class="table-container">
           <table>`;
       
-      servicio.valores.forEach((valor, index) => {
-        const isNetflix = servicio.nombre === "netflix";
-        const headerClass = isNetflix ? 'netflix-header' : '';
-        
+      const isNetflix = servicio.nombre === "netflix";
+      
+      if (isNetflix) {
+        // Para Netflix: mostrar encabezados para cada plan
+        servicio.valores.forEach((valor, index) => {
+          tableHTML += `
+            <thead class="netflix-header">
+              <tr>
+                <th colspan="2">${valor.tipo}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Precio Afiliado</td><td>$${valor.afiliado.toLocaleString('es-CO')}</td></tr>
+              <tr><td>Precio Sugerido</td><td>$${valor.sugerido.toLocaleString('es-CO')}</td></tr>
+              <tr><td>Ganancia</td><td>$${valor.ganancia.toLocaleString('es-CO')}</td></tr>
+            </tbody>`;
+        });
+      } else {
+        // Para otros servicios: sin encabezado, solo la tabla
         tableHTML += `
-          <thead class="${headerClass}">
-            <tr>
-              <th colspan="2">${valor.tipo}</th>
-            </tr>
-          </thead>
           <tbody>
-            <tr><td>Precio Afiliado</td><td>$${valor.afiliado.toLocaleString('es-CO')}</td></tr>
-            <tr><td>Precio Sugerido</td><td>$${valor.sugerido.toLocaleString('es-CO')}</td></tr>
-            <tr><td>Ganancia</td><td>$${valor.ganancia.toLocaleString('es-CO')}</td></tr>
+            <tr><td>Precio Afiliado</td><td>$${servicio.valores[0].afiliado.toLocaleString('es-CO')}</td></tr>
+            <tr><td>Precio Sugerido</td><td>$${servicio.valores[0].sugerido.toLocaleString('es-CO')}</td></tr>
+            <tr><td>Ganancia</td><td>$${servicio.valores[0].ganancia.toLocaleString('es-CO')}</td></tr>
           </tbody>`;
-      });
+      }
       
       tableHTML += `</table></div>`;
       
@@ -495,7 +504,6 @@
       return card;
     }
 
-    // Función para ordenar por ganancia
     function sortByGanancia(order = 'desc') {
       const cards = Array.from(container.querySelectorAll('.card'));
       
@@ -514,7 +522,6 @@
       cards.forEach(card => container.appendChild(card));
     }
 
-    // Función para ordenar por popularidad
     function sortByPopularity() {
       const cards = Array.from(container.querySelectorAll('.card'));
       
@@ -528,7 +535,6 @@
       cards.forEach(card => container.appendChild(card));
     }
 
-    // Función para orden por defecto
     function sortDefault() {
       container.innerHTML = '';
       serviciosOriginal.forEach(servicio => {
@@ -536,15 +542,12 @@
       });
     }
 
-    // Guardar el orden original
     let serviciosOriginal = [...servicios];
     
-    // Renderizar las tarjetas inicialmente
     servicios.forEach((servicio) => {
       container.appendChild(crearTarjeta(servicio));
     });
 
-    // Event listeners para los botones de ordenar
     document.querySelectorAll('.dropdown-content a').forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
