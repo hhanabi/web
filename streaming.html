@@ -18,6 +18,12 @@
       src: url('https://raw.githubusercontent.com/novaklar/web/main/Poppins-Regular.ttf') format('truetype');
       font-display: swap;
     }
+    @font-face {
+      font-family: 'Poppins';
+      font-weight: 500;
+      src: url('https://raw.githubusercontent.com/novaklar/web/main/Poppins-Medium.ttf') format('truetype');
+      font-display: swap;
+    }
   </style>
 
   <link href="https://fonts.googleapis.com/css2?family=Comme:wght@700&display=swap" rel="stylesheet">
@@ -61,11 +67,11 @@
       margin: 0 auto;
     }
 
-    /* Botón Regresar */
+    /* Botón Regresar - peso medium */
     .btn-back {
       padding: 0.7rem 2rem;
       border-radius: 0.5rem;
-      font-weight: 600;
+      font-weight: 500;
       font-size: 1rem;
       cursor: pointer;
       text-decoration: none;
@@ -88,7 +94,7 @@
       background-color: rgba(8, 10, 51, 0.08);
     }
 
-    /* ===== BOTONES SEGMENTADOS - SIN FONDO GRIS ===== */
+    /* ===== BOTONES SEGMENTADOS - peso regular/medium ===== */
     .mode-segmented {
       display: flex;
       gap: 0;
@@ -105,7 +111,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: 600;
+      font-weight: 500;
       font-size: 0.95rem;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -125,6 +131,40 @@
     .mode-segmented-btn.active {
       background-color: #080a33;
       color: white;
+      font-weight: 500;
+    }
+
+    /* Cabeceras de las tablas - peso semibold */
+    .table-container thead tr th {
+      padding: 0.5rem 1rem;
+      text-align: center;
+      font-weight: 600;
+      color: #ffffff;
+      background-color: #080a33;
+    }
+
+    /* Filas de las tablas - peso regular */
+    .table-container td {
+      padding: 0.5rem 1rem;
+      border-bottom: 1px solid #e2e8f0;
+      color: #080a33;
+      font-weight: 400;
+    }
+
+    /* Estilo para el modo promotor */
+    .promotor-highlight {
+      background-color: #f0f7ff;
+    }
+    
+    .promotor-highlight td:first-child {
+      color: #080a33;
+      font-weight: 500;
+    }
+
+    .promotor-highlight td:last-child {
+      color: #080a33;
+      font-size: 1.1rem;
+      font-weight: 600;
     }
 
     .container {
@@ -180,14 +220,6 @@
       font-size: 0.9rem;
     }
 
-    .table-container thead tr th {
-      padding: 0.5rem 1rem;
-      text-align: center;
-      font-weight: 600;
-      color: #ffffff;
-      background-color: #080a33;
-    }
-
     .table-container thead tr:first-child th {
       padding-top: 0.6rem;
       border-top-left-radius: 0.6rem;
@@ -207,109 +239,25 @@
       background: linear-gradient(to right, #022336, #19bac6);
     }
 
-    .table-container td {
-      padding: 0.5rem 1rem;
-      border-bottom: 1px solid #e2e8f0;
-      color: #080a33;
-    }
-
     .table-container tr:last-child td {
       border-bottom: none;
     }
 
-    /* Estilo para el modo promotor */
-    .promotor-highlight {
-      background-color: #f0f7ff;
-      font-weight: 600;
-    }
-
-    .promotor-highlight td:first-child {
-      color: #080a33;
-    }
-
-    .promotor-highlight td:last-child {
-      color: #080a33;
-      font-size: 1.1rem;
-    }
-
     @media (max-width: 768px) {
-      body {
-        padding-top: 1.5rem;
-      }
-      
-      .logo-container {
-        margin-bottom: 1.5rem;
-      }
-      
-      .logo-container img {
-        height: 120px;
-      }
-      
-      .controls-row {
-        flex-direction: column;
-        gap: 1rem;
-        width: 100%;
-      }
-      
-      .btn-back {
-        width: 100%;
-        max-width: 300px;
-      }
-      
-      .mode-segmented {
-        width: 100%;
-        max-width: 300px;
-      }
+      body { padding-top: 1.5rem; }
+      .logo-container { margin-bottom: 1.5rem; }
+      .logo-container img { height: 120px; }
+      .controls-row { flex-direction: column; gap: 1rem; width: 100%; }
+      .btn-back { width: 100%; max-width: 300px; }
+      .mode-segmented { width: 100%; max-width: 300px; }
     }
 
     @media (max-width: 600px) {
-      .logo-container img {
-        height: 110px;
-      }
-      
-      .btn-back,
-      .mode-segmented {
-        max-width: 280px;
-      }
-      
-      .container {
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1.5rem;
-        padding: 1rem;
-      }
-      
-      .card {
-        width: 280px;
-      }
-      
-      .card img {
-        width: 280px;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .logo-container img {
-        height: 100px;
-      }
-      
-      .btn-back,
-      .mode-segmented {
-        max-width: 260px;
-      }
-      
-      .container {
-        grid-template-columns: 1fr;
-      }
-      
-      .card {
-        width: 100%;
-        max-width: 300px;
-      }
-      
-      .card img {
-        width: 100%;
-        max-width: 300px;
-      }
+      .logo-container img { height: 110px; }
+      .btn-back, .mode-segmented { max-width: 280px; }
+      .container { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+      .card { width: 280px; }
+      .card img { width: 280px; }
     }
   </style>
 </head>
@@ -320,10 +268,8 @@
     </div>
     
     <div class="controls-row">
-      <!-- Botón Regresar -->
       <a href="index.html" class="btn-back">Regresar</a>
       
-      <!-- Botones segmentados sin fondo gris -->
       <div class="mode-segmented" id="modeSegmented">
         <button class="mode-segmented-btn active" id="segmentedRevendedor">Revendedor</button>
         <button class="mode-segmented-btn" id="segmentedPromotor">Promotor</button>
@@ -339,16 +285,8 @@
     let currentMode = 'revendedor';
     
     const popularityOrder = [
-      "youtube.png",
-      "netflix.png", 
-      "spotify.png",
-      "prime.png",
-      "disney.png",
-      "hbo.png",
-      "crunchyroll.png",
-      "paramount.png",
-      "viki.png",
-      "vix.png"
+      "youtube.png", "netflix.png", "spotify.png", "prime.png", "disney.png",
+      "hbo.png", "crunchyroll.png", "paramount.png", "viki.png", "vix.png"
     ];
 
     const servicios = [
@@ -427,26 +365,19 @@
         return index === 0 ? 5000 : 9000;
       } else {
         switch(servicio.nombre) {
-          case 'hbo':
-          case 'prime':
-            return 3500;
-          case 'paramount':
-          case 'viki':
-          case 'crunchyroll':
-          case 'vix':
-            return 3000;
-          case 'youtube':
-            return 6000;
-          case 'spotify':
-            return 8500;
-          default:
-            return servicio.valores[0].afiliado - 2500;
+          case 'hbo': case 'prime': return 3500;
+          case 'paramount': case 'viki': case 'crunchyroll': case 'vix': return 3000;
+          case 'youtube': return 6000;
+          case 'spotify': return 8500;
+          default: return servicio.valores[0].afiliado - 2500;
         }
       }
     }
 
+    // ACTUALIZADO AL 55%
     function calcularGananciaPromotor(precioReal, precioSugerido) {
-      return Math.round((precioSugerido - precioReal) * 0.5);
+      const diferencia = precioSugerido - precioReal;
+      return Math.round(diferencia * 0.55); // 55% de la diferencia
     }
 
     function crearTarjeta(servicio, modo) {
@@ -515,7 +446,7 @@
               </thead>
               <tbody>
                 <tr class="promotor-highlight">
-                  <td>Ganancia Promotor</td>
+                  <td>Ganancia Promotor (55%)</td>
                   <td>$${gananciaPromotor.toLocaleString('es-CO')}</td>
                 </tr>
               </tbody>`;
@@ -527,7 +458,7 @@
           tableHTML += `
             <tbody>
               <tr class="promotor-highlight">
-                <td>Ganancia Promotor</td>
+                <td>Ganancia Promotor (55%)</td>
                 <td>$${gananciaPromotor.toLocaleString('es-CO')}</td>
               </tr>
             </tbody>`;
@@ -555,7 +486,6 @@
       servicios.forEach(servicio => container.appendChild(crearTarjeta(servicio, modo)));
     }
 
-    // Inicializar botones segmentados
     const revendedorBtn = document.getElementById('segmentedRevendedor');
     const promotorBtn = document.getElementById('segmentedPromotor');
 
@@ -574,7 +504,6 @@
     revendedorBtn.addEventListener('click', () => setMode('revendedor'));
     promotorBtn.addEventListener('click', () => setMode('promotor'));
 
-    // Render inicial
     renderAllCards('revendedor');
   </script>
 </body>
