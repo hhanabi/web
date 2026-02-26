@@ -14,7 +14,7 @@
     }
     @font-face {
       font-family: 'Poppins';
-      font-weight: 400; /* Regular */
+      font-weight: 400;
       src: url('https://raw.githubusercontent.com/novaklar/web/main/Poppins-Regular.ttf') format('truetype');
       font-display: swap;
     }
@@ -51,16 +51,19 @@
       filter: brightness(0) saturate(100%) invert(14%) sepia(97%) saturate(2475%) hue-rotate(230deg) brightness(89%) contrast(101%);
     }
 
-    .controls-buttons {
+    .controls-row {
       display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 1rem;
       width: 100%;
-      max-width: 350px;
+      max-width: 550px;
+      margin: 0 auto;
     }
 
-    .controls-btn {
-      flex: 1;
-      padding: 0.7rem 1.2rem;
+    /* Botón Regresar */
+    .btn-back {
+      padding: 0.7rem 2rem;
       border-radius: 0.5rem;
       font-weight: 600;
       font-size: 1rem;
@@ -70,74 +73,58 @@
       transition: all 0.2s ease;
       font-family: 'Poppins', sans-serif;
       min-height: 48px;
+      height: 52px;
       display: flex;
       align-items: center;
       justify-content: center;
       box-sizing: border-box;
-    }
-
-    .btn-outline {
       background-color: transparent;
       color: #080a33;
       border: 2px solid #080a33;
+      width: 140px;
     }
 
-    .btn-outline:hover {
+    .btn-back:hover {
       background-color: rgba(8, 10, 51, 0.08);
     }
 
-    .btn-filled {
-      background-color: #080a33;
-      color: #ffffff;
+    /* ===== BOTONES SEGMENTADOS - SIN FONDO GRIS ===== */
+    .mode-segmented {
+      display: flex;
+      gap: 0;
+      width: 280px;
+      height: 52px;
       border: 2px solid #080a33;
-    }
-
-    .btn-filled:hover {
-      background-color: #06082a;
-      border-color: #06082a;
-    }
-
-    .dropdown {
-      position: relative;
-      display: inline-block;
-      flex: 1;
-    }
-
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #ffffff;
-      min-width: 100%;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1000;
-      border-radius: 0.4rem;
+      border-radius: 0.5rem;
       overflow: hidden;
-      top: 100%;
-      left: 0;
-      margin-top: 0.3rem;
-      border: 1px solid #e2e8f0;
+      background-color: transparent;
     }
 
-    .dropdown-content a {
+    .mode-segmented-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
       color: #080a33;
-      padding: 0.8rem 1rem;
-      text-decoration: none;
-      display: block;
-      font-size: 0.9rem;
-      transition: background-color 0.2s;
-      border-bottom: 1px solid #e2e8f0;
+      background-color: transparent;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      height: 100%;
+      padding: 0;
+      border-right: 2px solid #080a33;
     }
 
-    .dropdown-content a:last-child {
-      border-bottom: none;
+    .mode-segmented-btn:last-child {
+      border-right: none;
     }
 
-    .dropdown-content a:hover {
-      background-color: #f5f5f5;
-    }
-
-    .dropdown:hover .dropdown-content {
-      display: block;
+    .mode-segmented-btn.active {
+      background-color: #080a33;
+      color: white;
     }
 
     .container {
@@ -208,8 +195,16 @@
       overflow: hidden;
     }
 
+    .table-container thead:not(:first-child) tr th {
+      border-radius: 0 !important;
+    }
+
     .table-container thead.netflix-header th {
       background-color: #e50914;
+    }
+
+    .table-container thead.disney-header th {
+      background: linear-gradient(to right, #022336, #19bac6);
     }
 
     .table-container td {
@@ -222,13 +217,24 @@
       border-bottom: none;
     }
 
+    /* Estilo para el modo promotor */
+    .promotor-highlight {
+      background-color: #f0f7ff;
+      font-weight: 600;
+    }
+
+    .promotor-highlight td:first-child {
+      color: #080a33;
+    }
+
+    .promotor-highlight td:last-child {
+      color: #080a33;
+      font-size: 1.1rem;
+    }
+
     @media (max-width: 768px) {
       body {
         padding-top: 1.5rem;
-      }
-      
-      .top-controls {
-        padding: 0 1rem 1.5rem;
       }
       
       .logo-container {
@@ -239,44 +245,31 @@
         height: 120px;
       }
       
-      .controls-buttons {
-        max-width: 320px;
+      .controls-row {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
       }
       
-      .controls-btn {
-        padding: 0.6rem 1rem;
-        font-size: 0.95rem;
-        min-height: 46px;
+      .btn-back {
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .mode-segmented {
+        width: 100%;
+        max-width: 300px;
       }
     }
 
     @media (max-width: 600px) {
-      .top-controls {
-        flex-direction: column;
-      }
-      
-      .logo-container {
-        order: 1;
-        margin-bottom: 1.5rem;
-      }
-      
       .logo-container img {
         height: 110px;
       }
       
-      .controls-buttons {
-        order: 2;
-        flex-direction: column;
-        gap: 0.8rem;
+      .btn-back,
+      .mode-segmented {
         max-width: 280px;
-        margin-top: 0.5rem;
-      }
-      
-      .controls-btn {
-        width: 100%;
-        padding: 0.6rem 1rem;
-        font-size: 0.95rem;
-        min-height: 44px;
       }
       
       .container {
@@ -295,27 +288,13 @@
     }
 
     @media (max-width: 400px) {
-      body {
-        padding-top: 1rem;
-      }
-      
-      .top-controls {
-        padding: 0 1rem 1rem;
-      }
-      
       .logo-container img {
         height: 100px;
       }
       
-      .controls-buttons {
+      .btn-back,
+      .mode-segmented {
         max-width: 260px;
-        gap: 0.7rem;
-      }
-      
-      .controls-btn {
-        padding: 0.55rem 0.9rem;
-        font-size: 0.9rem;
-        min-height: 42px;
       }
       
       .container {
@@ -340,15 +319,14 @@
       <img src="https://raw.githubusercontent.com/hhanabi/web/refs/heads/main/hanabi.svg" alt="Hanabi Logo" />
     </div>
     
-    <div class="controls-buttons">
-      <a href="index.html" class="controls-btn btn-outline">Regresar</a>
-      <div class="dropdown">
-        <button class="controls-btn btn-filled">Ordenar</button>
-        <div class="dropdown-content">
-          <a href="#" onclick="sortByGanancia('desc')">+ Ganancia</a>
-          <a href="#" onclick="sortByPopularity()">+ Popularidad</a>
-          <a href="#" onclick="sortDefault()">Defecto</a>
-        </div>
+    <div class="controls-row">
+      <!-- Botón Regresar -->
+      <a href="index.html" class="btn-back">Regresar</a>
+      
+      <!-- Botones segmentados sin fondo gris -->
+      <div class="mode-segmented" id="modeSegmented">
+        <button class="mode-segmented-btn active" id="segmentedRevendedor">Revendedor</button>
+        <button class="mode-segmented-btn" id="segmentedPromotor">Promotor</button>
       </div>
     </div>
   </div>
@@ -358,6 +336,7 @@
   <script>
     const container = document.getElementById('cards-container');
     let currentlyOpenCard = null;
+    let currentMode = 'revendedor';
     
     const popularityOrder = [
       "youtube.png",
@@ -378,7 +357,7 @@
         displayName: "Netflix",
         imageName: "netflix.png",
         valores: [
-          { tipo: "Perfil genérico", afiliado: 11500, sugerido: 14500, ganancia: 3000 },
+          { tipo: "Perfil genérico", afiliado: 11500, sugerido: 15500, ganancia: 4000 },
           { tipo: "Perfil original", afiliado: 15000, sugerido: 18000, ganancia: 3000 }
         ]
       },
@@ -386,49 +365,52 @@
         nombre: "hbo", 
         displayName: "HBO Max",
         imageName: "hbo.png",
-        valores: [{ afiliado: 5500, sugerido: 10000, ganancia: 4500 }]
+        valores: [{ afiliado: 6000, sugerido: 10000, ganancia: 4000 }]
       },
       { 
         nombre: "disney", 
         displayName: "Disney+",
         imageName: "disney.png",
-        valores: [{ afiliado: 7000, sugerido: 10000, ganancia: 3000 }]
+        valores: [
+          { tipo: "Plan Estándar", afiliado: 7500, sugerido: 10500, ganancia: 3000 },
+          { tipo: "Plan Premium", afiliado: 11500, sugerido: 15500, ganancia: 4000 }
+        ]
       },
       { 
         nombre: "paramount", 
         displayName: "Paramount+",
         imageName: "paramount.png",
-        valores: [{ afiliado: 5000, sugerido: 10000, ganancia: 5000 }]
+        valores: [{ afiliado: 5500, sugerido: 9500, ganancia: 4000 }]
       },
       { 
         nombre: "prime", 
         displayName: "Prime Video",
         imageName: "prime.png",
-        valores: [{ afiliado: 5300, sugerido: 10000, ganancia: 4700 }]
+        valores: [{ afiliado: 6000, sugerido: 10000, ganancia: 4000 }]
       },
       { 
         nombre: "viki", 
         displayName: "Viki",
         imageName: "viki.png",
-        valores: [{ afiliado: 5000, sugerido: 10000, ganancia: 5000 }]
+        valores: [{ afiliado: 5500, sugerido: 9500, ganancia: 4000 }]
       },
       { 
         nombre: "youtube", 
         displayName: "YouTube",
         imageName: "youtube.png",
-        valores: [{ afiliado: 8000, sugerido: 12000, ganancia: 4000 }]
+        valores: [{ afiliado: 8500, sugerido: 12500, ganancia: 4000 }]
       },
       { 
         nombre: "crunchyroll", 
         displayName: "Crunchyroll",
         imageName: "crunchyroll.png",
-        valores: [{ afiliado: 5000, sugerido: 10000, ganancia: 5000 }]
+        valores: [{ afiliado: 5500, sugerido: 9500, ganancia: 4000 }]
       },
       { 
         nombre: "vix", 
         displayName: "Vix",
         imageName: "vix.png",
-        valores: [{ afiliado: 5000, sugerido: 10000, ganancia: 5000 }]
+        valores: [{ afiliado: 5500, sugerido: 9500, ganancia: 4000 }]
       },
       { 
         nombre: "spotify", 
@@ -438,122 +420,162 @@
       }
     ];
 
-    function crearTarjeta(servicio) {
+    function obtenerPrecioReal(servicio, index = 0) {
+      if (servicio.nombre === 'netflix') {
+        return index === 0 ? 9000 : 12500;
+      } else if (servicio.nombre === 'disney') {
+        return index === 0 ? 5000 : 9000;
+      } else {
+        switch(servicio.nombre) {
+          case 'hbo':
+          case 'prime':
+            return 3500;
+          case 'paramount':
+          case 'viki':
+          case 'crunchyroll':
+          case 'vix':
+            return 3000;
+          case 'youtube':
+            return 6000;
+          case 'spotify':
+            return 8500;
+          default:
+            return servicio.valores[0].afiliado - 2500;
+        }
+      }
+    }
+
+    function calcularGananciaPromotor(precioReal, precioSugerido) {
+      return Math.round((precioSugerido - precioReal) * 0.5);
+    }
+
+    function crearTarjeta(servicio, modo) {
       const card = document.createElement('div');
       card.className = 'card';
       card.dataset.nombre = servicio.nombre;
-      card.dataset.ganancia = servicio.valores[0].ganancia;
+      
+      if (modo === 'promotor') {
+        const precioReal = obtenerPrecioReal(servicio, 0);
+        card.dataset.ganancia = calcularGananciaPromotor(precioReal, servicio.valores[0].sugerido);
+      } else {
+        card.dataset.ganancia = servicio.valores[0].ganancia;
+      }
+      
       card.dataset.popularity = popularityOrder.indexOf(servicio.imageName);
       
       const rutaImagen = `https://raw.githubusercontent.com/hhanabi/web/refs/heads/main/hanabifile/${servicio.imageName}`;
       
-      let tableHTML = `
-        <div class="table-container">
-          <table>`;
-      
+      let tableHTML = `<div class="table-container"><table>`;
       const isNetflix = servicio.nombre === "netflix";
+      const isDisney = servicio.nombre === "disney";
       
-      if (isNetflix) {
-        // Para Netflix: mostrar encabezados para cada plan
-        servicio.valores.forEach((valor, index) => {
+      if (modo === 'revendedor') {
+        if (isNetflix) {
+          servicio.valores.forEach((valor) => {
+            tableHTML += `
+              <thead class="netflix-header">
+                <tr><th colspan="2">${valor.tipo}</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Precio Afiliado</td><td>$${valor.afiliado.toLocaleString('es-CO')}</td></tr>
+                <tr><td>Precio Sugerido</td><td>$${valor.sugerido.toLocaleString('es-CO')}</td></tr>
+                <tr><td>Ganancia</td><td>$${valor.ganancia.toLocaleString('es-CO')}</td></tr>
+              </tbody>`;
+          });
+        } else if (isDisney) {
+          servicio.valores.forEach((valor) => {
+            tableHTML += `
+              <thead class="disney-header">
+                <tr><th colspan="2">${valor.tipo}</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Precio Afiliado</td><td>$${valor.afiliado.toLocaleString('es-CO')}</td></tr>
+                <tr><td>Precio Sugerido</td><td>$${valor.sugerido.toLocaleString('es-CO')}</td></tr>
+                <tr><td>Ganancia</td><td>$${valor.ganancia.toLocaleString('es-CO')}</td></tr>
+              </tbody>`;
+          });
+        } else {
           tableHTML += `
-            <thead class="netflix-header">
-              <tr>
-                <th colspan="2">${valor.tipo}</th>
-              </tr>
-            </thead>
             <tbody>
-              <tr><td>Precio Afiliado</td><td>$${valor.afiliado.toLocaleString('es-CO')}</td></tr>
-              <tr><td>Precio Sugerido</td><td>$${valor.sugerido.toLocaleString('es-CO')}</td></tr>
-              <tr><td>Ganancia</td><td>$${valor.ganancia.toLocaleString('es-CO')}</td></tr>
+              <tr><td>Precio Afiliado</td><td>$${servicio.valores[0].afiliado.toLocaleString('es-CO')}</td></tr>
+              <tr><td>Precio Sugerido</td><td>$${servicio.valores[0].sugerido.toLocaleString('es-CO')}</td></tr>
+              <tr><td>Ganancia</td><td>$${servicio.valores[0].ganancia.toLocaleString('es-CO')}</td></tr>
             </tbody>`;
-        });
+        }
       } else {
-        // Para otros servicios: sin encabezado, solo la tabla
-        tableHTML += `
-          <tbody>
-            <tr><td>Precio Afiliado</td><td>$${servicio.valores[0].afiliado.toLocaleString('es-CO')}</td></tr>
-            <tr><td>Precio Sugerido</td><td>$${servicio.valores[0].sugerido.toLocaleString('es-CO')}</td></tr>
-            <tr><td>Ganancia</td><td>$${servicio.valores[0].ganancia.toLocaleString('es-CO')}</td></tr>
-          </tbody>`;
+        if (isNetflix || isDisney) {
+          servicio.valores.forEach((valor, index) => {
+            const precioReal = obtenerPrecioReal(servicio, index);
+            const gananciaPromotor = calcularGananciaPromotor(precioReal, valor.sugerido);
+            const headerClass = isNetflix ? 'netflix-header' : 'disney-header';
+            
+            tableHTML += `
+              <thead class="${headerClass}">
+                <tr><th colspan="2">${valor.tipo}</th></tr>
+              </thead>
+              <tbody>
+                <tr class="promotor-highlight">
+                  <td>Ganancia Promotor</td>
+                  <td>$${gananciaPromotor.toLocaleString('es-CO')}</td>
+                </tr>
+              </tbody>`;
+          });
+        } else {
+          const precioReal = obtenerPrecioReal(servicio);
+          const gananciaPromotor = calcularGananciaPromotor(precioReal, servicio.valores[0].sugerido);
+          
+          tableHTML += `
+            <tbody>
+              <tr class="promotor-highlight">
+                <td>Ganancia Promotor</td>
+                <td>$${gananciaPromotor.toLocaleString('es-CO')}</td>
+              </tr>
+            </tbody>`;
+        }
       }
       
       tableHTML += `</table></div>`;
-      
-      card.innerHTML = `
-        <img src="${rutaImagen}" alt="${servicio.displayName}" />
-        ${tableHTML}
-      `;
+      card.innerHTML = `<img src="${rutaImagen}" alt="${servicio.displayName}" />${tableHTML}`;
       
       const tableContainer = card.querySelector('.table-container');
-      
       card.addEventListener('click', (e) => {
-        if (e.target.tagName === 'IMG' && tableContainer.style.display === 'block') {
-          return;
-        }
-        
+        if (e.target.tagName === 'IMG' && tableContainer.style.display === 'block') return;
         if (currentlyOpenCard && currentlyOpenCard !== tableContainer) {
           currentlyOpenCard.style.display = 'none';
         }
-        
         tableContainer.style.display = tableContainer.style.display === 'block' ? 'none' : 'block';
-        
         currentlyOpenCard = tableContainer.style.display === 'block' ? tableContainer : null;
       });
       
       return card;
     }
 
-    function sortByGanancia(order = 'desc') {
-      const cards = Array.from(container.querySelectorAll('.card'));
-      
-      cards.sort((a, b) => {
-        const gananciaA = parseInt(a.dataset.ganancia);
-        const gananciaB = parseInt(b.dataset.ganancia);
-        
-        if (order === 'desc') {
-          return gananciaB - gananciaA;
-        } else {
-          return gananciaA - gananciaB;
-        }
-      });
-      
+    function renderAllCards(modo) {
       container.innerHTML = '';
-      cards.forEach(card => container.appendChild(card));
+      servicios.forEach(servicio => container.appendChild(crearTarjeta(servicio, modo)));
     }
 
-    function sortByPopularity() {
-      const cards = Array.from(container.querySelectorAll('.card'));
-      
-      cards.sort((a, b) => {
-        const popA = parseInt(a.dataset.popularity);
-        const popB = parseInt(b.dataset.popularity);
-        return popA - popB;
-      });
-      
-      container.innerHTML = '';
-      cards.forEach(card => container.appendChild(card));
+    // Inicializar botones segmentados
+    const revendedorBtn = document.getElementById('segmentedRevendedor');
+    const promotorBtn = document.getElementById('segmentedPromotor');
+
+    function setMode(mode) {
+      currentMode = mode;
+      if (mode === 'revendedor') {
+        revendedorBtn.classList.add('active');
+        promotorBtn.classList.remove('active');
+      } else {
+        revendedorBtn.classList.remove('active');
+        promotorBtn.classList.add('active');
+      }
+      renderAllCards(mode);
     }
 
-    function sortDefault() {
-      container.innerHTML = '';
-      serviciosOriginal.forEach(servicio => {
-        container.appendChild(crearTarjeta(servicio));
-      });
-    }
+    revendedorBtn.addEventListener('click', () => setMode('revendedor'));
+    promotorBtn.addEventListener('click', () => setMode('promotor'));
 
-    let serviciosOriginal = [...servicios];
-    
-    servicios.forEach((servicio) => {
-      container.appendChild(crearTarjeta(servicio));
-    });
-
-    document.querySelectorAll('.dropdown-content a').forEach(link => {
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
-      });
-    });
-
+    // Render inicial
+    renderAllCards('revendedor');
   </script>
 </body>
 </html>
